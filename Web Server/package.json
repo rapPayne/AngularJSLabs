@@ -1,0 +1,17 @@
+{
+  "name": "AngularJSLabs",
+  "version": "0.0.1",
+  "author": "Rap Payne",
+  "bugs": "rap@creator.net",
+  "scripts": {
+    "start": "node northwindServer.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "gulp": "^3.9.0",
+    "gulp-nodemon": "^2.0.3",
+    "mongodb": "*",
+    "mongoose": "*",
+    "body-parser": "*"
+  }
+}
