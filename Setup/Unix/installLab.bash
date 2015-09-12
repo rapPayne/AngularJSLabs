@@ -21,7 +21,7 @@ if (( $? != 0 )) ; then
   exit 3
 fi
 
-# Run npm install for the WebServer
+# Run npm install for the webserver
 cd "../WebServer"
 npm install
 

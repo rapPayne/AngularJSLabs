@@ -4,8 +4,8 @@
   "author": "Rap Payne",
   "bugs": "rap@creator.net",
   "dependencies": {
-    "angular": "*",
-    "angular-route": "*",
-    "bootstrap": "*"
+    "angular": "^1.4.5",
+    "angular-route": "^1.4.5",
+    "bootstrap": "^3.3.5"
   }
 }
