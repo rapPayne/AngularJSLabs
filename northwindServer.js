@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 //var fs = require('fs');
 
-var db = mongoose.connect('mongodb://localhost/Northwind');
+var db = mongoose.connect('mongodb://localhost/northwind');
 var product = require('./webserver/models/productModel');
 var employee = require('./webserver/models/employeeModel');
 

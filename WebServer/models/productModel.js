@@ -2,16 +2,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var productModel = new Schema({
-  "ProductID" : {type: Number},
-  "ProductName" : {type: String},
-  "SupplierID" : {type: Number},
-  "CategoryID" : {type: Number},
-  "QuantityPerUnit" : {type: String},
-  "UnitPrice" : {type: Number},
-  "UnitsInStock" : {type: Number},
-  "UnitsOnOrder" : {type: Number},
-  "ReorderLevel" : {type: Number},
-  "Discontinued" : {type: Boolean, default: false }
+  "productID" : {type: Number},
+  "productName" : {type: String},
+  "supplierID" : {type: Number},
+  "categoryID" : {type: Number},
+  "quantityPerUnit" : {type: String},
+  "unitPrice" : {type: Number},
+  "unitsInStock" : {type: Number},
+  "unitsOnOrder" : {type: Number},
+  "reorderLevel" : {type: Number},
+  "discontinued" : {type: Boolean, default: false }
 });
 
-module.exports=mongoose.model('Product', productModel);
+module.exports=mongoose.model('product', productModel);

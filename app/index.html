@@ -10,10 +10,8 @@
   <link rel="stylesheet" href="../assets/css/site.css"/>
   <script src="./node_modules/angular/angular.min.js" defer></script>
   <script src="./product/productModule.js" defer></script>
+  <script src="./product/productService.js"  defer></script>
   <script src="./product/productController.js"  defer></script>
-  <style>
-
-  </style>
 </head>
 <body class="container" ng-app="productModule">
 <div ng-include="'./shared/pageHeaderPartial.html'"></div>
@@ -29,7 +27,7 @@
   <div class="carousel slide" data-ride="carousel" id="featuredCarousel" ng-controller="productController">
     <div class="carousel-inner">
 
-      <div ng-repeat="product in products" class="item text-center" ng-class="{active: $first}">
+      <div ng-repeat="product in products | limitTo:4" class="item text-center" ng-class="{active: $first}">
         <a ng-href='product.html?id={{product.productID}}'><img class="center-block" ng-src='../assets/img/productImages/{{product.productID}}.jpg' alt='{{product.productName}}'/>{{product.productName}}</a>
       </div>
     </div> <!-- /.carousel-inner -->
