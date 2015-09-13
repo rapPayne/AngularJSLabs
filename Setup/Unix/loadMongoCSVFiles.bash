@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dbName="Northwind"
+dbName="northwind"
 
 # Start up MongoDB
 mongod >/tmp/mongo.log 2>&1 &
@@ -18,7 +18,7 @@ if ! (mongoimport --version > /dev/null) ; then
 fi
 
 # Make sure the CSV files are there
-filesLocation=${1:-./csv}
+filesLocation=${1:-../csv}
 if ! [[ -d "$filesLocation" ]] ; then
   echo "$filesLocation does not exist. Give me the directory where your csv files are located." >&2
   exit 1
@@ -35,7 +35,7 @@ fi
 # Destroy the old database
 mongo <<EOF
 var conn = new Mongo();
-var db = conn.getDB("Northwind");
+var db = conn.getDB("$dbName");
 db.dropDatabase();
 EOF
 
