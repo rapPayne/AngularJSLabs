@@ -8,11 +8,14 @@
   <script src="site.js"></script>
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="../assets/css/site.css"/>
+  <script src="./node_modules/angular/angular.min.js" defer></script>
+  <script src="./product/productModule.js" defer></script>
+  <script src="./product/productController.js"  defer></script>
   <style>
 
   </style>
 </head>
-<body class="container">
+<body class="container" ng-app="productModule">
 <nav class="navbar navbar-default navbar-fixed-top">
   <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar">
     <span class="glyphicon glyphicon-menu-hamburger"></span></button>
@@ -39,7 +42,7 @@
   </div>
 </nav>
 <header class="jumbotron img-rounded row">
-  <img class="img-responsive col-sm-3" src="../assets/img/NorthwindSchooner.png" alt="Schooner logo"/>
+  <img class="img-responsive col-sm-3" src="../assets/img/ChefHatLogo.png" alt="Northwind logo"/>
   <h1 class="col-sm-9">Northwind Traders
     <small>Fine foods for restaurants</small>
   </h1>
@@ -53,21 +56,11 @@
   <h3>
     Today's featured items
   </h3>
-  <div class="carousel slide" data-ride="carousel" id="featuredCarousel">
+  <div class="carousel slide" data-ride="carousel" id="featuredCarousel" ng-controller="productController">
     <div class="carousel-inner">
-      <div class="item active text-center">
-        <a href='product.html?Id=38'><img class="center-block" src='../assets/img/productImages/38.jpg' alt='Côte de Blaye'/>Côte de Blaye</a>
-      </div>
-      <div class="item text-center">
-        <a href='product.html?Id=29'><img class="center-block" src='../assets/img/productImages/29.jpg' alt='Thüringer Rostbratwurst'/>Thüringer
-          Rostbratwurst</a>
-      </div>
-      <div class="item text-center">
-        <a href='product.html?Id=9'><img class="center-block" src='../assets/img/productImages/9.jpg' alt='Mishi Kobe Niku'/>Mishi Kobe Niku</a>
-      </div>
-      <div class="item text-center">
-        <a href='product.html?Id=20'><img class="center-block" src='../assets/img/productImages/20.jpg' alt="Sir Rodney's Marmalade"/>Sir Rodney's
-          Marmalade</a>
+
+      <div ng-repeat="product in products" class="item text-center" ng-class="{active: $first}">
+        <a ng-href='product.html?id={{product.productID}}'><img class="center-block" ng-src='../assets/img/productImages/{{product.productID}}.jpg' alt='{{product.productName}}'/>{{product.productName}}</a>
       </div>
     </div> <!-- /.carousel-inner -->
 
