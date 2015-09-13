@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Search</title>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="site.js"></script>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../assets/css/site.css"/>
+</head>
+<body class="container">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar">
+    <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+  <div id="topNavbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="index.html">Northwind Traders</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">things to do <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="search.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+          <li><a href="aboutUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-info-sign"></span> About us</a></li>
+          <li><a href="contactUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-envelope"></span> Contact us</a></li>
+          <li><a href="search.html?SearchString=''"><span class="glyphicon glyphicon-list-alt"></span> Catalog</a></li>
+        </ul>
+      </li>
+      <li><a href="checkout.html"><span class="glyphicon glyphicon-shopping-cart"></span> Your cart <span
+        class="badge">4</span></a></li>
+    </ul>
+    <p class="navbar-text">Welcome! <a href="login.html">Log in</a></p>
+    <form action="search.html" method="get" class="navbar-form navbar-left">
+      <input type="search" name="searchString" id="searchString" title="Enter a product description" placeholder="Search"/>
+      <button class="btn"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+  </div>
+</nav>
+<header class="jumbotron img-rounded row">
+  <img class="img-responsive col-sm-3" src="../assets/img/NorthwindSchooner.png" alt="Schooner logo"/>
+  <h1 class="col-sm-9">Northwind Traders
+    <small>Fine foods for restaurants</small>
+  </h1>
+</header>
+<main class="row">
+  <h1>Search for products</h1>
+
+  <div id="searchedTerm" class="text-primary bg-primary">You searched for 'ma'</div>
+  Enter all or part of the description: <input name="search" type="text" value="ma" id="search"/>
+  <button id="go" class="btn btn-primary">Search</button>
+  Category:
+  <select name="category" id="category">
+    <option value="0" selected>All categories</option>
+    <option value="1">Beverages</option>
+    <option value="2">Condiments</option>
+    <option value="3">Confections</option>
+    <option value="4">Dairy Products</option>
+    <option value="5">Grains/Cereals</option>
+    <option value="6">Meat/Poultry</option>
+    <option value="7">Produce</option>
+    <option value="8">Seafood</option>
+  </select>
+
+  <div class="table">
+    <div class="row hidden-xs">
+      <div class="col-sm-2">Photo</div>
+      <div class="col-sm-5">Name</div>
+      <div class="col-sm-3">Quantity Per Unit</div>
+      <div class="col-sm-2">Price</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"><img class="img-responsive" src="Images/ProductImages/6.jpg"/></div>
+      <div class="col-sm-5"><a href="product.html?id=6">Grandma's Boysenberry Spread</a></div>
+      <div class="col-sm-3">12 - 8 oz jars</div>
+      <div class="col-sm-2">$25.00</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"><img class="img-responsive" src="Images/ProductImages/12.jpg"/></div>
+      <div class="col-sm-5"><a href="product.html?id=12">Queso Manchego La Pastora</a></div>
+      <div class="col-sm-3">10 - 500 g pkgs.</div>
+      <div class="col-sm-2">$38.00</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"><img class="img-responsive" src="Images/ProductImages/20.jpg"/></div>
+      <div class="col-sm-5"><a href="product.html?id=20">Sir Rodney's Marmalade <span class="label label-success">Featured</span></a></div>
+      <div class="col-sm-3">30 gift boxes</div>
+      <div class="col-sm-2">$81.00</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"><img class="img-responsive" src="Images/ProductImages/30.jpg"/></div>
+      <div class="col-sm-5"><a href="product.html?id=30">Nord-Ost Matjeshering</a></div>
+      <div class="col-sm-3">10 - 200 g glasses</div>
+      <div class="col-sm-2">$25.89</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"><img class="img-responsive" src="Images/ProductImages/32.jpg"/></div>
+      <div class="col-sm-5"><a href="product.html?id=32">Mascarpone Fabioli</a></div>
+      <div class="col-sm-3">24 - 200 g pkgs.</div>
+      <div class="col-sm-2">$32.00</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"><img class="img-responsive" src="Images/ProductImages/44.jpg"/></div>
+      <div class="col-sm-5"><a href="product.html?id=44">Gula Malacca</a></div>
+      <div class="col-sm-3">20 - 2 kg bags</div>
+      <div class="col-sm-2">$19.45</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"><img class="img-responsive" src="Images/ProductImages/49.jpg"/></div>
+      <div class="col-sm-5"><a href="product.html?id=49">Maxilaku</a></div>
+      <div class="col-sm-3">24 - 50 g pkgs.</div>
+      <div class="col-sm-2">$20.00</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"><img class="img-responsive" src="Images/ProductImages/51.jpg"/></div>
+      <div class="col-sm-5"><a href="product.html?id=51">Manjimup Dried Apples</a></div>
+      <div class="col-sm-3">50 - 300 g pkgs.</div>
+      <div class="col-sm-2">$53.00</div>
+    </div>
+    <div class="row">
+      <div class="text-success bg-success">8 products found.</div>
+    </div>
+  </div>
+</main>
+<footer class="row">
+  <span>Copyright &copy; Northwind Traders</span>
+  <ul class="list-unstyled list-inline text-center">
+    <li><a href="https://www.facebook.com/pages/Northwind-Traders/101856779971208">Facebook</a></li>
+    <li><a href="https://twitter.com/NWTNews">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/company/northwind-ventures-dba-northwind-technologies-?trk=company_logo">LinkedIn</a>
+    </li>
+  </ul>
+</footer>
+</body>
+</html>
