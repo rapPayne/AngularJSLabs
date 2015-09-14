@@ -3,6 +3,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 //var fs = require('fs');
 
 var db = mongoose.connect('mongodb://localhost/northwind');
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 var productRouter = require('./webserver/Routes/productRoutes.js')(product);
 var employeeRouter = require('./webserver/Routes/employeeRoutes.js')(employee);
 
+app.use(favicon(__dirname + '/assets/img/favicon.ico'));
 app.use('/api/product',productRouter);
 app.use('/api/employee',employeeRouter);
 app.use(express.static(__dirname));
