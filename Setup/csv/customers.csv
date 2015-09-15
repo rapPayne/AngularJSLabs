@@ -1,22 +1,22 @@
-customerID,companyName,contactName,contactTitle,address,city,region,postalCode,country,phone,email
-ALFKI,Alfreds Futterkiste,Maria Anders,Sales Representative,Obere Str. 57,Berlin,NULL,12209,Germany,030-0074321,maria@alfreds.co.de
-ANATR,Ana Trujillo Emparedados y helados,Ana Trujillo,Owner,Avda. de la Constitución 2222,México D.F.,NULL,05021,Mexico,(5) 555-4729,anat@trujillo.com
-ANTON,Antonio Moreno Taquería,Antonio Moreno,Owner,Mataderos  2312,México D.F.,NULL,05023,Mexico,(5) 555-3932,antonio@gmail.com
-AROUT,Around the Horn,Thomas Hardy,Sales Representative,120 Hanover Sq.,London,NULL,WA1 1DP,UK,(171) 555-7788,AroundTheHorn@yahoo.com
-BERGS,Berglunds snabbköp,Christina Berglund,Order Administrator,Berguvsvägen  8,Luleå,NULL,S-958 22,Sweden,0921-12 34 65,snabbkop@msn.com
-BLAUS,Blauer See Delikatessen,Hanna Moos,Sales Representative,Forsterstr. 57,Mannheim,NULL,68306,Germany,0621-08460,Moos@seedeli.co.de
-BLONP,Blondesddsl père et fils,Frédérique Citeaux,Marketing Manager,24, place Kléber,Strasbourg,NULL,67000,France,88.60.15.31,NULL
-BOLID,Bólido Comidas preparadas,Martín Sommer,Owner,C/ Araquil, 67,Madrid,NULL,28023,Spain,(91) 555 22 82,martin@bolidocomidas.com
-BONAP,Bon app',Laurence Lebihan,Owner,12, rue des Bouchers,Marseille,NULL,13008,France,91.24.45.40,bonapp@gmail.com
-BOTTM,Bottom-Dollar Markets,Elizabeth Lincoln,Accounting Manager,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada,(604) 555-4729,bottomdollereh@gmail.com
-BSBEV,B's Beverages,Victoria Ashworth,Sales Representative,Fauntleroy Circus,London,NULL,EC2 5NT,UK,(171) 555-1212,bsbev@yahoo.com
-CACTU,Cactus Comidas para llevar,Patricio Simpson,Sales Agent,Cerrito 333,Buenos Aires,NULL,1010,Argentina,(1) 135-5555,NULL
-CENTC,Centro comercial Moctezuma,Francisco Chang,Marketing Manager,Sierras de Granada 9993,México D.F.,NULL,05022,Mexico,(5) 555-3392,(5) 555-7293
-CHOPS,Chop-suey Chinese,Yang Wang,Owner,Hauptstr. 29,Bern,NULL,3012,Switzerland,0452-076545,NULL
-COMMI,Comércio Mineiro,Pedro Afonso,Sales Associate,Av. dos Lusíadas, 23,Sao Paulo,SP,05432-043,Brazil,(11) 555-7647,NULL
-CONSH,Consolidated Holdings,Elizabeth Brown,Sales Representative,Berkeley Gardens 12  Brewery,London,NULL,WX1 6LT,UK,(171) 555-2282,(171) 555-9199
-DRACD,Drachenblut Delikatessen,Sven Ottlieb,Order Administrator,Walserweg 21,Aachen,NULL,52066,Germany,0241-039123,0241-059428
-DUMON,Du monde entier,Janine Labrune,Owner,67, rue des Cinquante Otages,Nantes,NULL,44000,France,40.67.88.88,40.67.89.89
+customerID,companyName,contactName,contactTitle,address,city,region,postalCode,country,phone
+ALFKI,Alfreds Futterkiste,Maria Anders,Sales Representative,Obere Str. 57,Berlin,NULL,12209,Germany,030-0074321
+ANATR,Ana Trujillo Emparedados y helados,Ana Trujillo,Owner,Avda. de la Constitución 2222,México D.F.,NULL,05021,Mexico,(5) 555-4729
+ANTON,Antonio Moreno Taquería,Antonio Moreno,Owner,Mataderos  2312,México D.F.,NULL,05023,Mexico,(5) 555-3932
+AROUT,Around the Horn,Thomas Hardy,Sales Representative,120 Hanover Sq.,London,NULL,WA1 1DP,UK,(171) 555-7788
+BERGS,Berglunds snabbköp,Christina Berglund,Order Administrator,Berguvsvägen  8,Luleå,NULL,S-958 22,Sweden,0921-12 34 65
+BLAUS,Blauer See Delikatessen,Hanna Moos,Sales Representative,Forsterstr. 57,Mannheim,NULL,68306,Germany,0621-08460
+BLONP,Blondesddsl père et fils,Frédérique Citeaux,Marketing Manager,24, place Kléber,Strasbourg,NULL,67000,France,88.60.15.31
+BOLID,Bólido Comidas preparadas,Martín Sommer,Owner,C/ Araquil, 67,Madrid,NULL,28023,Spain,(91) 555 22 82
+BONAP,Bon app',Laurence Lebihan,Owner,12, rue des Bouchers,Marseille,NULL,13008,France,91.24.45.40
+BOTTM,Bottom-Dollar Markets,Elizabeth Lincoln,Accounting Manager,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada,(604) 555-4729
+BSBEV,B's Beverages,Victoria Ashworth,Sales Representative,Fauntleroy Circus,London,NULL,EC2 5NT,UK,(171) 555-1212
+CACTU,Cactus Comidas para llevar,Patricio Simpson,Sales Agent,Cerrito 333,Buenos Aires,NULL,1010,Argentina,(1) 135-5555
+CENTC,Centro comercial Moctezuma,Francisco Chang,Marketing Manager,Sierras de Granada 9993,México D.F.,NULL,05022,Mexico,(5) 555-3392
+CHOPS,Chop-suey Chinese,Yang Wang,Owner,Hauptstr. 29,Bern,NULL,3012,Switzerland,0452-076545
+COMMI,Comércio Mineiro,Pedro Afonso,Sales Associate,Av. dos Lusíadas, 23,Sao Paulo,SP,05432-043,Brazil,(11) 555-7647
+CONSH,Consolidated Holdings,Elizabeth Brown,Sales Representative,Berkeley Gardens 12  Brewery,London,NULL,WX1 6LT,UK,(171) 555-2282
+DRACD,Drachenblut Delikatessen,Sven Ottlieb,Order Administrator,Walserweg 21,Aachen,NULL,52066,Germany,0241-039123
+DUMON,Du monde entier,Janine Labrune,Owner,67, rue des Cinquante Otages,Nantes,NULL,44000,France,40.67.88.88
 EASTC,Eastern Connection,Ann Devon,Sales Agent,35 King George,London,NULL,WX3 6FW,UK,(171) 555-0297,(171) 555-3373
 ERNSH,Ernst Handel,Roland Mendel,Sales Manager,Kirchgasse 6,Graz,NULL,8010,Austria,7675-3425,7675-3426
 FAMIA,Familia Arquibaldo,Aria Cruz,Marketing Assistant,Rua Orós, 92,Sao Paulo,SP,05442-030,Brazil,(11) 555-9857,NULL
