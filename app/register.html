@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="../assets/css/site.css"/>
   <script src="./node_modules/angular/angular.min.js" defer></script>
-  <script src="./product/productModule.js" defer></script>
-  <script src="./product/productController.js"  defer></script>
+  <script src="./auth/authModule.js" defer></script>
+  <script src="./auth/registerController.js"  defer></script>
 </head>
-<body class="container" ng-app="productModule">
+<body class="container" ng-app="authModule">
 <div ng-include="'./shared/pageHeaderPartial.html'"></div>
-<main class="row">
+<main class="row" ng-controller="registerController">
 
   <h2>Create a New Account</h2>
 
@@ -22,36 +22,32 @@
     Use the form below to create a new account.
   </p>
 
-  <p class="alert alert-danger">
-    Passwords are required to be a minimum of 6 characters in length.
-  </p>
-
   <div>
-    <form action="register.html" method="post">
+    <form ng-submit="registerUser()" novalidate>
       <fieldset class="col-md-6">
         <legend>
           Account Information
         </legend>
         <div class="form-group">
-          <label for="userName" class="control-label">User Name:</label>
-          <input name="userName" class="form-control" type="text" id="userName" required/>
-        </div>
-        <div class="form-group">
-          <label for="companyName" class="control-label">Company Name:</label>
-          <input name="companyName" class="form-control" type="text" id="companyName" pattern=".{5,}"
-                 title="Company name (at least 5 characters)." required/>
+          <label for="username" class="control-label">Username:</label>
+          <input ng-model="username" name="username" class="form-control" type="text" id="username" required/>
         </div>
         <div class="form-group">
           <label for="email" class="control-label">E-mail:</label>
-          <input name="email" class="form-control" type="email" id="email"/>
+          <input ng-model="email" name="email" class="form-control" type="email" id="email"/>
+        </div>
+        <div class="form-group">
+          <label for="companyName" class="control-label">Company Name</label>
+          <input ng-model="companyName" name="companyName" class="form-control" type="text" id="companyName" pattern=".{5,}"
+                 title="Restaurant/cafe name (at least 5 characters)." required/>
         </div>
         <div class="form-group has-error">
           <label for="password" id="PasswordLabel" class="control-label">Password:</label>
-          <input name="password" class="form-control" type="password" id="password"/>
+          <input ng-model="password" name="password" class="form-control" type="password" id="password"/>
         </div>
         <div class="form-group">
           <label for="confirmPassword" id="confirmPasswordLabel" class="control-label">Confirm Password:</label>
-          <input name="confirmPassword" class="form-control" type="password" id="confirmPassword"/>
+          <input ng-model="confirmPassword" name="confirmPassword" class="form-control" type="password" id="confirmPassword"/>
         </div>
       </fieldset>
       <fieldset class="col-md-6">
@@ -59,42 +55,45 @@
           My address information (Optional)
         </legend>
         <div class="form-group">
+          <label for="firstName" class="control-label">First (given) Name</label>
+          <input ng-model="firstName" name="firstName" class="form-control" type="text" id="firstName"/>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="control-label">Last (family) Name</label>
+          <input ng-model="lastName" name="lastName" class="form-control" type="text" id="lastName"/>
+        </div>
+        <div class="form-group">
           <label for="address" class="control-label">Address</label>
-          <input name="address" class="form-control" type="text" id="address"/>
+          <input ng-model="address" name="address" class="form-control" type="text" id="address"/>
         </div>
         <div class="form-group">
           <label for="city" class="control-label">City</label>
-          <input name="city" class="form-control" type="text" id="city"/>
+          <input ng-model="city" name="city" class="form-control" type="text" id="city"/>
         </div>
         <div class="form-group">
           <label for="region" class="control-label">Region/State</label>
-          <input name="region" class="form-control" type="text" id="region"/>
+          <input ng-model="region" name="region" class="form-control" type="text" id="region"/>
         </div>
         <div class="form-group">
           <label for="postalCode" class="control-label">Postal Code</label>
-          <input name="postalCode" class="form-control" type="text" id="postalCode"/>
+          <input ng-model="postalCode" name="postalCode" class="form-control" type="text" id="postalCode"/>
         </div>
         <div class="form-group">
           <label for="country" class="control-label">Country</label>
-          <input name="country" class="form-control" type="text" id="country"/>
+          <input ng-model="country" name="country" class="form-control" type="text" id="country"/>
         </div>
       </fieldset>
-      <input type="submit" class="btn btn-primary" value="Create User" id="createUserButton" data-toggle="modal" data-target="#problemModal"/>
+      <input type="submit" class="btn btn-primary" value="Create User" id="createUserButton" />
     </form>
+    <p class="alert alert-success" ng-show="successMessage">
+      {{ successMessage }}
+    </p>
+    <p class="alert alert-danger" ng-show="errorMessage">
+      {{ errorMessage }}
+    </p>
   </div>
 </main>
 <footer class="row" ng-include="'./shared/pageFooterPartial.html'">
 </footer>
-<div id="problemModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <h3>Oh, no! A problem!</h3>
-        <p>Passwords are required to be a minimum of 6 characters in length.</p>
-      </div><!-- /.modal-body -->
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 </body>
 </html>

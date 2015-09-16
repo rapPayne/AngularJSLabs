@@ -3,16 +3,23 @@
   "version": "0.0.1",
   "author": "Rap Payne",
   "bugs": "rap@creator.net",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rapPayne/AngularJSLabs.git"
+  },
   "scripts": {
     "start": "node northwindServer.js"
   },
   "dependencies": {
+    "body-parser": "^1.13.3",
     "express": "^5.0.0",
+    "express-session": "^1.11.3",
     "gulp": "^3.9.0",
     "gulp-nodemon": "^2.0.3",
     "mongodb": "^2.0.33",
     "mongoose": "^4.1.7",
-    "body-parser": "^1.13.3",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0",
     "serve-favicon": "^2.3.0"
   }
 }

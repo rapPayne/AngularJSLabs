@@ -22,7 +22,7 @@ if (( $? != 0 )) ; then
 fi
 
 # Run npm install for the webserver
-cd "../WebServer"
+cd "../webServer"
 npm install
 
 # Run npm install for the app
