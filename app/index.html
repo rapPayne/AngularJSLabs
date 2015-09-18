@@ -9,11 +9,13 @@
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="../assets/css/site.css"/>
   <script src="./node_modules/angular/angular.min.js" defer></script>
+  <script src="./node_modules/angular-route/angular-route.min.js" defer></script>
   <script src="./product/productModule.js" defer></script>
+  <script src="./main/mainModule.js" defer></script>
   <script src="./product/productService.js"  defer></script>
-  <script src="./product/productController.js"  defer></script>
+  <script src="./main/mainProductController.js"  defer></script>
 </head>
-<body class="container" ng-app="productModule">
+<body class="container" ng-app="mainModule">
 <div ng-include="'./shared/pageHeaderPartial.html'"></div>
 <main class="row">
   <p>
@@ -24,11 +26,11 @@
   <h3>
     Today's featured items
   </h3>
-  <div class="carousel slide" data-ride="carousel" id="featuredCarousel" ng-controller="productController">
+  <div class="carousel slide" data-ride="carousel" id="featuredCarousel" ng-controller="mainProductController">
     <div class="carousel-inner">
 
       <div ng-repeat="product in products | limitTo:4" class="item text-center" ng-class="{active: $first}">
-        <a ng-href='product.html?id={{product.productID}}'><img class="center-block" ng-src='../assets/img/productImages/{{product.productID}}.jpg' alt='{{product.productName}}'/>{{product.productName}}</a>
+        <a ng-href='product/{{product.productID}}'><img class="center-block" ng-src='../assets/img/productImages/{{product.productID}}.jpg' alt='{{product.productName}}'/>{{product.productName}}</a>
       </div>
     </div> <!-- /.carousel-inner -->
 

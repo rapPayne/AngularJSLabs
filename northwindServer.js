@@ -36,9 +36,14 @@ app.use('/api/employee',employeeRouter);
 app.use(express.static(__dirname));
 
 app.get('/', function (req, res) {
+  console.log('hit main route');
   res.redirect('/app/index.html');
 });
 
+app.get('/product/:id', function (req, res) {
+  console.log('hit product route');
+  res.redirect('/app/product/index.html#/' + req.params.id);
+})
 // Set up passport authentication
 /*
 app.use(session({secret: 'o hai there :-)'}));  //express sessions before passport sessions

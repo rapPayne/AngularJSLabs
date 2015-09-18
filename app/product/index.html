@@ -9,41 +9,18 @@
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="../../assets/css/site.css"/>
   <script src="../node_modules/angular/angular.min.js" defer></script>
+  <script src="../node_modules/angular-route/angular-route.min.js" defer></script>
   <script src="productModule.js" defer></script>
-  <script src="productController.js"  defer></script>
+  <script src="productListController.js"  defer></script>
+  <script src="productDetailController.js"  defer></script>
+  <script src="productService.js"  defer></script>
 </head>
 <body class="container" ng-app="productModule">
-<div ng-include="'./shared/pageHeaderPartial.html'"></div>
+<div ng-include="'/app/shared/pageHeaderPartial.html'"></div>
 <main class="row">
-
-  <div class='productDetail'>
-    <img src='images/productImages/49.jpg' alt='Maxilaku'/>
-
-    <p>
-      Maxilaku
-    </p>
-
-    <p>
-      Category: Confections
-    </p>
-
-    <p>
-      Unit: 24 - 50 g pkgs.
-    </p>
-
-    <p>
-      Price: 20.00
-    </p>
-  </div>
-
-  <div id="addToCart">
-    <label for="quantity">Quantity:</label>
-    <input name="quantity" type="text" value="1" id="quantity"/>
-    <input type="submit" value="Add to cart"/>
-  </div>
-
+  <div ng-view></div>
 </main>
-<footer class="row" ng-include="'./shared/pageFooterPartial.html'">
+<footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
 </footer>
 </body>
 </html>

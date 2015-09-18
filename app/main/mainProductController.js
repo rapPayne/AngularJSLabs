@@ -1,11 +1,8 @@
-/**
- * Created by rap on 9/13/15.
- */
 (function () {
-  angular.module("productModule")
-    .controller("productController", productController);
-  productController.$inject = ['$scope', 'productService'];
-  function productController($scope, productService) {
+  angular.module("mainModule")
+    .controller("mainProductController", mainProductController);
+  mainProductController.$inject = ['$scope', 'productService'];
+  function mainProductController($scope, productService) {
     productService.getAllProducts()
       .then(function (res) {
       $scope.products = res.data;

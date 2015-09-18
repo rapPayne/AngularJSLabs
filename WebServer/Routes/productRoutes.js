@@ -19,18 +19,19 @@ var routes = function (product) {
       res.status(201).send(p);
     });
 
-  apiRouter.use('/:productId', function (req, res, next) {
-    product.findById(req.params.productId, function (err, product) {
+  apiRouter.route('/:productID([0-9]{1,7})').get(function (req, res, next) {
+    var productID = req.params.productID;
+    product.findOne({"productID" : productID }, function (err, product) {
       if (err) {
         res.status(500).send(err);
       } else if (product) {
-        req.product = product;
-        next();
+        res.json(product);
       } else {
         res.status(404).send("No product with that Id");
       }
-    });
+    })
   });
+
   apiRouter.route('/:productId')
     .get(function (req, res) {
       res.json(req.product);
