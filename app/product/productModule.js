@@ -16,7 +16,7 @@
         templateUrl: "/app/product/productSearchPartial.html",
         caseInsensitiveMatch: true
       })
-      .when('/browse', {
+      .when('/browse/:categoryID?', {
         controller: 'productListController',
         templateUrl: "/app/product/productListPartial.html",
         caseInsensitiveMatch: true

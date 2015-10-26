@@ -1,10 +1,10 @@
-<h1>Search for products</h1>
+<h1>Browse the Product Catalog</h1>
 
 <div ng-show="searchString" id="searchedTerm" class="text-primary bg-primary">You searched for '{{ searchString }}'</div>
 Enter all or part of the description: <input ng-model="searchString" name="search" type="search" id="search" />
 <button id="go" class="btn btn-primary">Search</button>
 Category:
-<select ng-model='category' ng-options="category.CategoryName for category in categories track by category.CategoryID" name="category" id="category">
+<select ng-model='category' ng-options="category.categoryName for category in categories track by category.categoryID" name="category" id="category">
   <option value="">All categories</option>
 </select>
 
@@ -24,6 +24,6 @@ Category:
   </div>
 
   <div class="row">
-    <div class="text-success bg-success">{{ products.length }} products found.</div>
+    <div class="text-success bg-success col-xs-12">{{ products.length }} products found.</div>
   </div>
 </div>
