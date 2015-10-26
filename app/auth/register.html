@@ -3,17 +3,17 @@
 <head>
   <meta charset='utf-8'>
   <title>Register</title>
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="site.js"></script>
-  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="../assets/css/site.css"/>
-  <script src="./node_modules/angular/angular.min.js" defer></script>
-  <script src="./auth/authModule.js" defer></script>
-  <script src="./auth/registerController.js"  defer></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../site.js"></script>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../assets/css/site.css"/>
+  <script src="../node_modules/angular/angular.min.js" defer></script>
+  <script src="authModule.js" defer></script>
+  <script src="registerController.js"  defer></script>
 </head>
 <body class="container" ng-app="authModule">
-<div ng-include="'./shared/pageHeaderPartial.html'"></div>
+<div ng-include="'/app/shared/pageHeaderPartial.html'"></div>
 <main class="row" ng-controller="registerController">
 
   <h2>Create a New Account</h2>
@@ -93,7 +93,7 @@
     </p>
   </div>
 </main>
-<footer class="row" ng-include="'./shared/pageFooterPartial.html'">
+<footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
 </footer>
 </body>
 </html>

@@ -10,7 +10,7 @@ if ! (ping -c1 github.com >/dev/null)  ; then
 fi
 
 # Make sure npm is installed
-if (( npm --version >/dev/null 2>&1 )) ; then
+if ! (npm --version >/dev/null 2>&1) ; then
   echo "npm wasn't found. Make sure npm is installed and in your path and try again." >&2
   exit 2
 fi
@@ -22,7 +22,7 @@ if (( $? != 0 )) ; then
 fi
 
 # Run npm install for the webserver
-cd "../webServer"
+cd ../../webserver
 npm install
 
 # Run npm install for the app

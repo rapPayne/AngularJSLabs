@@ -1,6 +1,6 @@
 (function () {
   'use strict'
-  angular.module("productModule")
+  angular.module("sharedModule")
     .service("productService",productService);
   productService.$inject = ['$http'];
 

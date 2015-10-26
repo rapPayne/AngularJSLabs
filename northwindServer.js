@@ -20,16 +20,31 @@ var user = require('./webserver/models/userModel');
 
 var app = express();
 var port = process.env.port || 3000;
+
+// Turn on sessions
+app.use(session({
+  cookieName: 'session',
+  secret: 'o hai there :-)',     // For encrypting the session
+  duration: 20 * 60 * 1000,       // Initial life
+  activeDuration: 20 * 60 * 1000,  // Extended by this much after a visit
+  resave: true,
+  saveUninitialized: true
+}));
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 var productRouter = require('./webserver/Routes/productRoutes.js')(product);
 var employeeRouter = require('./webserver/Routes/employeeRoutes.js')(employee);
-var userRouter = require('./webserver/Routes/userRoutes.js')(user, customer);
+//var userRouter = require('./webserver/Routes/userRoutes.js')(user, customer);
+var loginRouter = require('./webserver/Routes/loginRoutes.js')(user, customer);
+var registerRouter = require('./webserver/Routes/registerRoutes.js')(user, customer);
 var customerRouter = require('./webserver/Routes/customerRoutes.js')(customer);
 
 app.use(favicon(__dirname + '/assets/img/favicon.ico'));
-app.use('/api/user',userRouter);
+app.use('/api/register',registerRouter);
+app.use('/api/login',loginRouter);
+//app.use('/api/user',userRouter);
 app.use('/api/product',productRouter);
 app.use('/api/customer',customerRouter);
 app.use('/api/employee',employeeRouter);
@@ -39,18 +54,32 @@ app.get('/', function (req, res) {
   console.log('hit main route');
   res.redirect('/app/index.html');
 });
+// Authentication routes
+app.get('/login', function (req, res) {
+  console.log('Login route ...Session is', req.session);
+  res.redirect('/app/auth/login.html');
+});
+app.get("/register", function (req, res) {
+    console.log("hit register get");
+    res.redirect("/app/auth/register.html");
+  });
+app.post("/register", function (req, res) {
+    console.log("hit register post");
+    //TODO: Add the new user here.
+  });
 
+// Product routes
 app.get('/product/:id', function (req, res) {
   console.log('hit product route');
   res.redirect('/app/product/index.html#/' + req.params.id);
 })
 // Set up passport authentication
+
 /*
-app.use(session({secret: 'o hai there :-)'}));  //express sessions before passport sessions
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(function(username, password, next) {
-  var user = { username: "rap", firstName: "Bob", lastName: "Payne"};
+  var user = { username: "rap", firstName: "Rap", lastName: "Payne"};
   return next(null, user);
 }));
   //TODO: Do a real verify from here: auth.verifyUser));
@@ -107,6 +136,9 @@ app.use(function(err, req, res, next) {
   });
 });
 */
+
+
+//TODO: Add a list of pages that should be rerouted iff the user is not logged in.
 
 app.listen(port, function () {
   console.log('Node/express is running on port', port);

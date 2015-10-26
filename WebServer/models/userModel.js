@@ -3,6 +3,7 @@
 
   var userModel = new Schema({
     "username" : {type: String},
+    "password" : {type: String},
     "passwordHash" : {type: String},
     "salt" : {type: String},
     "lastName" : {type: String},

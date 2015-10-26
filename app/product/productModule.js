@@ -1,14 +1,24 @@
 (function () {
-  angular.module("productModule", ['ngRoute']);
+  angular.module("productModule", ['ngRoute', 'sharedModule']);
 
   angular.module("productModule")
     .config(config);
-  config.$inject = ['$routeProvider'];
-  function config($routeProvider) {
+  config.$inject = ['$routeProvider', '$locationProvider'];
+  function config($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         controller: 'productListController',
-        templateUrl: "productListPartial.html",
+        templateUrl: "/app/product/productListPartial.html",
+        caseInsensitiveMatch: true
+      })
+      .when('/search', {
+        controller: 'productSearchController',
+        templateUrl: "/app/product/productSearchPartial.html",
+        caseInsensitiveMatch: true
+      })
+      .when('/browse', {
+        controller: 'productListController',
+        templateUrl: "/app/product/productListPartial.html",
         caseInsensitiveMatch: true
       })
       .when('/:productID', {
@@ -18,6 +28,8 @@
       })
       .otherwise({
         //redirectTo: '/app/product/index.html'
-      })
+      });
+    //$locationProvider.html5Mode(true);
+
   };
 })();

@@ -7,7 +7,7 @@
       console.log("You submitted");
       $http({
         method: "POST",
-        url: "/api/user",
+        url: "/api/register",
         data: {
           username: $scope.username,
           password: $scope.password,

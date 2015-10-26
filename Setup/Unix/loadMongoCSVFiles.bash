@@ -45,3 +45,10 @@ for file in $files ; do
   collection=${file/.csv/""}
   mongoimport --db $dbName --collection $collection  --type csv --headerline --file $file
 done
+
+# Change the featured product field to a true boolean.
+mongo <<EOF
+use northwind;
+db.products.find({"featured":"true"}).forEach(function(a){a.featured=true;
+db.products.save(a)});
+EOF

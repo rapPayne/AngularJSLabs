@@ -3,6 +3,9 @@ var hasher = require('../auth/hasher');
 
 var routes = function (user, customer) {
   var apiRouter = express.Router();
+
+  //Provide a list of all users
+  //TODO: We don't need this, do we? Delete if not.
   apiRouter.route('/')
     .get(function (req, res) {
       user.find(function(err, users){
@@ -12,6 +15,7 @@ var routes = function (user, customer) {
           res.json(users);
       });
     })
+    //Adding a new user
     .post(function (req, res) {
       var u = new user(req.body);
       var c = new customer(req.body);
@@ -32,14 +36,16 @@ var routes = function (user, customer) {
       res.status(201).send(u);
     });
 
-  // Middleware insertion - intercept the request and do the find.
+  // Middleware insertion - intercept the request and do the find based on username and password.
   apiRouter.use('/:username', function (req, res, next) {
-    //TODO: Make sure user is authenticated to read his/her own record.
+    //TODO: Read his/her record based on username and password.  Currently only username.
     user.find({ "username": req.params.username }, function(err, user){
       if (err)
         res.status(500).send(err);
       else if (user) {
         req.user = user;
+        console.log("logging on", req.user, req.session);
+        req.session.user = req.user;  // Store the user in session for subsequent requests.  Will time out in 20 minutes.
         next();
       } else {
         res.status(404).send('No user with that name.');
@@ -69,9 +75,9 @@ var routes = function (user, customer) {
       if (req.body._id)
         delete req.body._id;
       for (var key in req.body) {
-       if (key in req.employee) {
-         req.employee[key] = req.body[key];
-       }
+        if (key in req.employee) {
+          req.employee[key] = req.body[key];
+        }
       }
       req.employee.save(function (err) {
         if (err)
