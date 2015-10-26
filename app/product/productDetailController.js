@@ -4,6 +4,7 @@
   productDetailController.$inject = ['$scope', 'productService', '$routeParams', '$window'];
 
   function productDetailController($scope, productService, $routeParams, $window) {
+    $scope.quantity = 1;
     var productID = $routeParams.productID;
     //TODO: Display category *name*, not categoryID. Will need to look it up.
     productService.getProduct(productID)

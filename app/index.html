@@ -30,7 +30,7 @@
     <div class="carousel-inner">
 
       <div ng-repeat="product in products | limitTo:4" class="item text-center" ng-class="{active: $first}">
-        <a ng-href='product/{{product.productID}}'><img class="center-block" ng-src='../assets/img/productImages/{{product.productID}}.jpg' alt='{{product.productName}}'/>{{product.productName}}</a>
+        <a ng-href='product/index.html#/{{product.productID}}'><img class="center-block" ng-src='../assets/img/productImages/{{product.productID}}.jpg' alt='{{product.productName}}'/>{{product.productName}}</a>
       </div>
     </div> <!-- /.carousel-inner -->
 
