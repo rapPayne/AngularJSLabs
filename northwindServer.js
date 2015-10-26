@@ -14,9 +14,9 @@ var auth = require('./webserver/auth'); // Whole darn directory
 var db = mongoose.connect('mongodb://localhost/northwind');
 var customer = require('./webserver/models/customerModel');
 var product = require('./webserver/models/productModel');
+var category = require('./webserver/models/categoryModel');
 var employee = require('./webserver/models/employeeModel');
 var user = require('./webserver/models/userModel');
-
 
 var app = express();
 var port = process.env.port || 3000;
@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 var productRouter = require('./webserver/Routes/productRoutes.js')(product);
+var categoryRouter = require('./webserver/Routes/categoryRoutes.js')(category);
 var employeeRouter = require('./webserver/Routes/employeeRoutes.js')(employee);
 //var userRouter = require('./webserver/Routes/userRoutes.js')(user, customer);
 var loginRouter = require('./webserver/Routes/loginRoutes.js')(user, customer);
@@ -46,6 +47,7 @@ app.use('/api/register',registerRouter);
 app.use('/api/login',loginRouter);
 //app.use('/api/user',userRouter);
 app.use('/api/product',productRouter);
+app.use('/api/category',categoryRouter);
 app.use('/api/customer',customerRouter);
 app.use('/api/employee',employeeRouter);
 app.use(express.static(__dirname));

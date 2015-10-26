@@ -10,7 +10,6 @@ var routes = function (employee) {
         else
           res.json(employees);
       });
-
     })
     .post(function (req, res) {
       var e = new employee(req.body);
