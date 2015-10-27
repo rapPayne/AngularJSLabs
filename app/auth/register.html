@@ -9,11 +9,14 @@
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="../../assets/css/site.css"/>
   <script src="../node_modules/angular/angular.min.js" defer></script>
+  <script src="/app/shared/sharedModule.js" defer></script>
+  <script src="/app/shared/pageHeaderController.js" defer></script>
+  <script src="/app/shared/cartService.js" defer></script>
   <script src="authModule.js" defer></script>
   <script src="registerController.js"  defer></script>
 </head>
 <body class="container" ng-app="authModule">
-<div ng-include="'/app/shared/pageHeaderPartial.html'"></div>
+<div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
 <main class="row" ng-controller="registerController">
 
   <h2>Create a New Account</h2>

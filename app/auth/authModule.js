@@ -1,3 +1,4 @@
 (function () {
-  angular.module("authModule",[]);
+  'use strict';
+  angular.module("authModule",['sharedModule']);
 })();

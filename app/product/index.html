@@ -10,17 +10,18 @@
   <link rel="stylesheet" href="../../assets/css/site.css"/>
   <script src="../node_modules/angular/angular.min.js" defer></script>
   <script src="../node_modules/angular-route/angular-route.min.js" defer></script>
-  <script src="../shared/sharedModule.js" defer></script>
+  <script src="/app/shared/sharedModule.js" defer></script>
+  <script src="/app/shared/pageHeaderController.js" defer></script>
+  <script src="/app/shared/cartService.js" defer></script>
   <script src="productModule.js" defer></script>
   <script src="productListController.js"  defer></script>
   <script src="productDetailController.js"  defer></script>
   <script src="productSearchController.js"  defer></script>
   <script src="/app/shared/productService.js"  defer></script>
   <script src="/app/shared/categoryService.js"  defer></script>
-  <script src="/app/shared/cartService.js"  defer></script>
 </head>
 <body class="container" ng-app="productModule">
-<div ng-include="'/app/shared/pageHeaderPartial.html'"></div>
+<div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
 <main class="row">
   <div ng-view></div>
 </main>
