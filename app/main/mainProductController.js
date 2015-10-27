@@ -3,7 +3,7 @@
     .controller("mainProductController", mainProductController);
   mainProductController.$inject = ['$scope', 'productService'];
   function mainProductController($scope, productService) {
-    productService.getAllProducts()
+    productService.getFeaturedProducts()
       .then(function (res) {
       $scope.products = res.data;
     }, function (error) {

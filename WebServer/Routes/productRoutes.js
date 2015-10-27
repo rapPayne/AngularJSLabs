@@ -2,6 +2,15 @@ var express = require('express');
 
 var routes = function (product) {
   var apiRouter = express.Router();
+  apiRouter.route('/featured')
+    .get(function (req, res) {
+    product.find({"featured": true}, function(err, products) {
+      if (err)
+        res.status(500).send(err);
+      else
+        res.json(products);
+    });
+  });
   apiRouter.route('/')
     .get(function (req, res) {
       var search = req.query.search;

@@ -3,6 +3,8 @@
     .controller("productListController", productListController);
   productListController.$inject = ['$scope', 'productService', 'categoryService', '$routeParams'];
   function productListController($scope, productService, categoryService, $routeParams) {
+    $scope.categories = $routeParams.categoryID;
+    console.log($routeParams, $scope.categoryID);
     categoryService.getAllCategories().then(function (res) {
         $scope.categories = res.data;
       }

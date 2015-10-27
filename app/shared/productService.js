@@ -11,6 +11,12 @@
         method: "GET"
       });
     };
+    this.getFeaturedProducts = function () {
+      return $http({
+        url: "/api/product/featured",
+        method: "GET"
+      });
+    };
     this.getProduct = function (productID) {
       return $http({
           url: "/api/product/" + productID,

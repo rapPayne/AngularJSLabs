@@ -5,10 +5,10 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
+var auth = require('./webserver/auth'); // Whole darn directory
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var session = require('express-session');
-var auth = require('./webserver/auth'); // Whole darn directory
 //var fs = require('fs');
 
 var db = mongoose.connect('mongodb://localhost/northwind');
