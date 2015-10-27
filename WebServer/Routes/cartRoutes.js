@@ -17,12 +17,9 @@ var routes = function () {
         res.status(400).send("Need a quantity");
       var quantity = parseInt(req.body.quantity);
       var cart = req.session.cart || [];
-      console.log("cart is ", cart);
       var existingLines = cart.filter(function (cartLine) {
-        console.log("result", cartLine.productID == productID, "cartline", cartLine, productID);
         return cartLine.product.productID == productID;
       });
-      console.log("Existing lines", existingLines, "Cart", cart);
       if (existingLines.length)
         existingLines[0].quantity += quantity;
       else
