@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/site.css"/>
   <script src="../node_modules/angular/angular.min.js" defer></script>
   <script src="/app/shared/sharedModule.js" defer></script>
+  <script src="/app/shared/pageHeaderController.js" defer></script>
   <script src="orderingModule.js" defer></script>
   <script src="checkoutController.js"  defer></script>
   <script src="shipAddressController.js"  defer></script>
@@ -17,7 +18,7 @@
   <script src="/app/shared/customerService.js" defer></script>
 </head>
 <body class="container" ng-app="orderingModule">
-<div ng-include="'/app/shared/pageHeaderPartial.html'"></div>
+<div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
 <main class="row" ng-controller="checkoutController">
   <h1> Check Out</h1>
   <div class="panel panel-default">

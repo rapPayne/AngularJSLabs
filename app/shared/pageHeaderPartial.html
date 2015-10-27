@@ -5,7 +5,7 @@
     <ul class="nav navbar-nav">
       <li><a href="/app/index.html">Northwind Traders</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">things to do <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Things to do <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="/app/product/index.html#/search"><span class="glyphicon glyphicon-search"></span> Search</a></li>
           <li><a href="aboutUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-info-sign"></span> About us</a></li>
@@ -14,7 +14,7 @@
         </ul>
       </li>
       <li><a href="/checkout"><span class="glyphicon glyphicon-shopping-cart"></span> Your cart <span
-        class="badge">4</span></a></li>
+        class="badge">{{cart.length}}</span></a></li>
     </ul>
     <p class="navbar-text">Welcome! <a href="/login">Log in</a></p>
     <form action="search.html" method="get" class="navbar-form navbar-left">
