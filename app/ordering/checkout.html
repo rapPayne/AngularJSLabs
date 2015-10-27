@@ -12,7 +12,9 @@
   <script src="/app/shared/sharedModule.js" defer></script>
   <script src="orderingModule.js" defer></script>
   <script src="checkoutController.js"  defer></script>
+  <script src="shipAddressController.js"  defer></script>
   <script src="/app/shared/cartService.js" defer></script>
+  <script src="/app/shared/customerService.js" defer></script>
 </head>
 <body class="container" ng-app="orderingModule">
 <div ng-include="'/app/shared/pageHeaderPartial.html'"></div>
@@ -55,36 +57,38 @@
     </tbody>
   </table>
     </div>
+  <section ng-controller="shipAddressController">
   <fieldset title="Where shall we ship this?">
     <legend>Where shall we ship this?</legend>
     <div class="form-group">
     <label for="shipName"class="control-label">Name to ship to:</label>
-    <input name="shipName" class="form-control" type="text" value="Cotton Williams" maxlength="40"
+    <input ng-model="customer.contactName" name="shipName" class="form-control" maxlength="40"
            id="shipName"/>
     </div>
     <div class="form-group">
-    <label for="shipAddress"class="control-label">Address:</label>
-    <input name="shipAddress" class="form-control" type="text" value="2636 Deep Valley Trail" maxlength="60"
-           id="shipAddress"/>
+    <label for="address"class="control-label">Address:</label>
+    <input ng-model="customer.address" name="address" class="form-control" maxlength="60"
+           id="address"/>
     </div>
     <div class="form-group">
-    <label for="shipCity"class="control-label">City:</label>
-    <input name="shipCity" class="form-control" type="text" value="Carrollton" maxlength="15" id="shipCity"/>
+    <label for="city"class="control-label">City:</label>
+    <input ng-model="customer.city" name="city" class="form-control" maxlength="15" id="city"/>
     </div>
     <div class="form-group">
-    <label for="shipRegion"class="control-label">Region/State:</label>
-    <input name="shipRegion" class="form-control" type="text" value="TX" maxlength="15" id="shipRegion"/>
+    <label for="region"class="control-label">Region/State:</label>
+    <input ng-model="customer.region" name="region" class="form-control" maxlength="15" id="region"/>
     </div>
     <div class="form-group">
-    <label for="shipPostalCode"class="control-label">Zip/Postal Code:</label>
-    <input name="shipPostalCode" class="form-control" type="text" value="75007" maxlength="10"
-           id="shipPostalCode"/>
+    <label for="postalCode"class="control-label">Zip/Postal Code:</label>
+    <input ng-model="customer.postalCode" name="postalCode" class="form-control" maxlength="10"
+           id="postalCode"/>
     </div>
     <div class="form-group">
-    <label for="shipCountry"class="control-label">Country:</label>
-    <input name="shipCountry" class="form-control" type="text" value="US" maxlength="15" id="shipCountry"/>
+    <label for="country"class="control-label">Country:</label>
+    <input ng-model="customer.country" name="country" class="form-control" maxlength="15" id="country"/>
       </div>
   </fieldset>
+  </section>
   <fieldset>
     <legend>How shall we ship it?</legend>
     <div class="form-group">
