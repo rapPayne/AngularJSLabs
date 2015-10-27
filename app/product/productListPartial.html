@@ -5,11 +5,11 @@ Enter all or part of the description: <input ng-model="searchString" name="searc
 <button id="go" class="btn btn-primary">Search</button>
 Category:
 <select ng-model='category'
-        ng-options="category.categoryName for category in categories track by category.categoryID"
+        ng-options="category.categoryName for category in categories"
         name="category" id="category">
   <option value="">All categories</option>
 </select>
-{{categoryID}}
+
 <div class="table">
   <div class="row hidden-xs">
     <div class="col-sm-2">Photo</div>

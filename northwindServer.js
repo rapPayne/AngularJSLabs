@@ -17,6 +17,7 @@ var product = require('./webserver/models/productModel');
 var category = require('./webserver/models/categoryModel');
 var employee = require('./webserver/models/employeeModel');
 var user = require('./webserver/models/userModel');
+// Note: cart is not a database collection. It is only stored in session.
 
 var app = express();
 var port = process.env.port || 3000;
@@ -34,6 +35,7 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
+var cartRouter = require('./webserver/Routes/cartRoutes.js')();
 var productRouter = require('./webserver/Routes/productRoutes.js')(product);
 var categoryRouter = require('./webserver/Routes/categoryRoutes.js')(category);
 var employeeRouter = require('./webserver/Routes/employeeRoutes.js')(employee);
@@ -43,13 +45,14 @@ var registerRouter = require('./webserver/Routes/registerRoutes.js')(user, custo
 var customerRouter = require('./webserver/Routes/customerRoutes.js')(customer);
 
 app.use(favicon(__dirname + '/assets/img/favicon.ico'));
-app.use('/api/register',registerRouter);
-app.use('/api/login',loginRouter);
-//app.use('/api/user',userRouter);
+app.use('/api/cart',cartRouter);
 app.use('/api/product',productRouter);
 app.use('/api/category',categoryRouter);
 app.use('/api/customer',customerRouter);
 app.use('/api/employee',employeeRouter);
+app.use('/api/register',registerRouter);
+app.use('/api/login',loginRouter);
+//app.use('/api/user',userRouter);
 app.use(express.static(__dirname));
 
 app.get('/', function (req, res) {
@@ -58,7 +61,12 @@ app.get('/', function (req, res) {
 });
 // Authentication routes
 app.get('/login', function (req, res) {
+  res.redirect('/app/auth/login.html');
+});
+app.post('/login', function (req, res) {
+  req.session.name = req.session.name || new Date().toUTCString();
   console.log('Login route ...Session is', req.session);
+  console.log('SessionID is ', req.sessionID);
   res.redirect('/app/auth/login.html');
 });
 app.get("/register", function (req, res) {
@@ -72,11 +80,15 @@ app.post("/register", function (req, res) {
 
 // Product routes
 app.get('/product/:id', function (req, res) {
-  console.log('hit product route');
   res.redirect('/app/product/index.html#/' + req.params.id);
-})
-// Set up passport authentication
+});
 
+// Ordering routes
+app.get('/checkout', function (req, res) {
+  res.redirect('/app/ordering/checkout.html');
+});
+
+// Set up passport authentication
 /*
 app.use(passport.initialize());
 app.use(passport.session());
