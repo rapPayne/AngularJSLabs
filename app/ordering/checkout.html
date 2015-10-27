@@ -9,19 +9,15 @@
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="../../assets/css/site.css"/>
   <script src="../node_modules/angular/angular.min.js" defer></script>
-  <script src="../product/productModule.js" defer></script>
-  <script src="../product/productListController.js"  defer></script>
+  <script src="/app/shared/sharedModule.js" defer></script>
+  <script src="orderingModule.js" defer></script>
+  <script src="checkoutController.js"  defer></script>
+  <script src="/app/shared/cartService.js" defer></script>
 </head>
-<body class="container" ng-app="productModule">
-<div ng-include="'./shared/pageHeaderPartial.html'"></div>
-<main class="row">
+<body class="container" ng-app="orderingModule">
+<div ng-include="'/app/shared/pageHeaderPartial.html'"></div>
+<main class="row" ng-controller="checkoutController">
   <h1> Check Out</h1>
-
-  <div id="errorMessage" class="alert alert-danger alert-dismissible">That credit card was not valid. Please try again.
-    <button type="button" class="close" data-dismiss="alert">
-      <span>&times;</span>
-    </button>
-  </div>
   <div class="panel panel-default">
     <div class="panel-body">
       You can change the number of items in your cart below. To remove a product from your cart altogether hit the
@@ -45,43 +41,18 @@
       <td style='text-align: right'>Subtotal:</td>
       <td></td>
       <td></td>
-      <td style='border-top: 5px'>$938.20</td>
+      <td style='border-top: 5px'>{{ cart.total | currency:"US$" }}</td>
     </tr>
     </tfoot>
     <tbody>
-    <tr>
-      <td>49</td>
-      <td>Maxilaku</td>
-      <td>$20.00</td>
-      <td><input type='text' data-id='49' value='5'/></td>
-      <td>$100.00</td>
-      <td><a href='/RemoveFromCart.html?ProductId=49'><span class="glyphicon glyphicon-trash"></span></a></td>
+    <tr ng-repeat="line in cart">
+      <td>{{line.product.productID}}</td>
+      <td>{{line.product.productName}}</td>
+      <td>{{line.product.unitPrice | currency:"US$"}}</td>
+      <td><input ng-bind="line.quantity" data-id='49' />{{line.quantity}}</td>
+      <td>{{ line.product.unitPrice * line.quantity | currency:"US$" }}</td>
+      <td><a ng-click='removeFromCart()'><span class="glyphicon glyphicon-trash"></span></a></td>
     </tr>
-    <tr>
-      <td>19</td>
-      <td>Teatime Chocolate Biscuits</td>
-      <td>$9.20</td>
-      <td><input type='text' data-id='19' value='8'/></td>
-      <td>$73.60</td>
-      <td><a href='/RemoveFromCart.html?ProductId=19'><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-    <tr>
-      <td>27</td>
-      <td>Schoggi Schokolade</td>
-      <td>$43.90</td>
-      <td><input type='text' data-id='27' value='14'/></td>
-      <td>$614.60</td>
-      <td><a href='/RemoveFromCart.html?ProductId=27'><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-    <tr>
-      <td>31</td>
-      <td>Gorgonzola Telino</td>
-      <td>$12.50</td>
-      <td><input type='text' data-id='31' value='12'/></td>
-      <td>$150.00</td>
-      <td><a href='/RemoveFromCart.html?ProductId=31'><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-
     </tbody>
   </table>
     </div>
@@ -178,7 +149,7 @@
   </div>
 
 </main>
-<footer class="row" ng-include="'./shared/pageFooterPartial.html'">
+<footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
 </footer>
 </body>
 </html>
