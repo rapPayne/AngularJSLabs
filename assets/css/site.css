@@ -4,3 +4,7 @@ body {
 #featuredCarousel img {
     height: 200px;
 }
+
+table#cartTable img {
+    height: 2em;
+}

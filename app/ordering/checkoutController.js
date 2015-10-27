@@ -4,15 +4,27 @@
     .controller('checkoutController', checkoutController);
   checkoutController.$inject = ['$scope', 'cartService'];
   function checkoutController($scope, cartService) {
-    var cart = cartService.getCart().then(
+    $scope.cart = [];
+    $scope.$watch('cart', function () {
+      $scope.cartTotal = getCartTotal($scope.cart);
+    });
+    cartService.getCart().then(
       function (response) {
-        $scope.cart = response.data;
-        console.log(response.data);
+        $scope.cart = response.data || [];
       },
       function (error) {
         console.error(error);
       }
     );
 
+  }
+
+  function getCartTotal(cart) {
+    console.log(cart);
+    var total = 0;
+    cart.forEach(function (line) {
+      total += line.product.unitPrice * line.quantity;
+    });
+    return total;
   }
 })();
