@@ -17,9 +17,9 @@
       }
     );
     $scope.removeFromCart = function (product) {
-      console.log("removing " + product);
       cartService.removeFromCart(product).then(
         function (response) {
+          console.log("removed from cart:", response);
           $scope.cart = response.data || [];
         },
         function (error) {
@@ -27,7 +27,6 @@
         }
       );
     }
-
   }
 
   function getCartTotal(cart) {

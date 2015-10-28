@@ -17,14 +17,14 @@
         }
       });
     };
-    this.removeFromCart = function (product, quantity) {
+    this.removeFromCart = function (product) {
       return $http({
         method: "DELETE",
         url: "/api/cart",
         data: {
-          "product": product,
-          "quantity": quantity
-        }
+          "product": product
+        },
+        headers: {"Content-Type": "application/json;charset=utf-8"}
       });
     };
   }

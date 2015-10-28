@@ -28,7 +28,18 @@ var routes = function () {
       res.status(204).send("Added product to cart");
     })
     .delete(function (req, res) {
-      res.status(500).send("Delete not yet implemented. It's not you. It's me.");
+      if (! req.body.product )
+        res.status(400).send("Need a product");
+      var product = req.body.product;
+      if (! product.productID )
+        res.status(400).send("Need a productID");
+      var productID = parseInt(product.productID);
+      var cart = req.session.cart || [];
+      var allOtherLines = cart.filter(function (cartLine) {
+        return cartLine.product.productID != productID;
+      });
+      req.session.cart = allOtherLines;
+      res.json(allOtherLines);
     });
 return apiRouter;
 };
