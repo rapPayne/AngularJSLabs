@@ -1,6 +1,6 @@
 <h1>Search for products</h1>
 
-<div id="searchedTerm" class="text-primary bg-primary">You searched for 'ma'</div>
+<div id="searchedTerm" class="text-primary bg-primary">You're searching for '{{searchString}}'</div>
 Enter all or part of the description: <input ng-model="searchString" name="search" type="text" id="search"/>
 <button id="go" class="btn btn-primary">Search</button>
 Category:
@@ -23,7 +23,7 @@ Category:
   </div>
 
   <div class="row">
-    <div class="text-success bg-success">{{ products.length }} products found.</div>
+    <div class="text-success bg-success">{{ (products | filter:{ productName:searchString, categoryID:category.CategoryID }).length }} products found.</div>
   </div>
 
 </div>

@@ -47,6 +47,8 @@
       }
     ];
 
+    $scope.searchString = $routeParams.searchString;
+
     productService.getAllProducts()
       .then(function (res) {
       $scope.products = res.data;

@@ -82,6 +82,9 @@ app.post("/register", function (req, res) {
 app.get('/product/:id', function (req, res) {
   res.redirect('/app/product/index.html#/' + req.params.id);
 });
+app.get('/search', function (req, res) {
+  res.redirect('/app/product/index.html#/search?searchString=' + req.query.searchString);
+});
 
 // Ordering routes
 app.get('/checkout', function (req, res) {

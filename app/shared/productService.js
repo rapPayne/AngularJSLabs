@@ -17,6 +17,13 @@
         method: "GET"
       });
     };
+    this.searchProducts = function (searchString) {
+      return $http({
+        url: "/api/product",
+        method: "GET",
+        date: {"searchString": searchString}
+      });
+    };
     this.getProduct = function (productID) {
       return $http({
           url: "/api/product/" + productID,
