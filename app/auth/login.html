@@ -21,9 +21,13 @@
 
   <h2> Log In </h2>
 
-  <p class="alert" ng-class="{'alert-info': ! successMessage && ! errorMessage, 'alert-success': successMessage, 'alert-danger': errorMessage}">
+  <p class="alert alert-info" ng-show="instructionsMessage">
     {{ instructionsMessage }}
+  </p>
+  <p class="alert alert-danger" ng-show="errorMessage">
     {{ errorMessage }}
+  </p>
+  <p class="alert alert-success" ng-show="successMessage">
     {{ successMessage }}
   </p>
 

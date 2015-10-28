@@ -16,11 +16,21 @@
         console.error(error);
       }
     );
+    $scope.removeFromCart = function (product) {
+      console.log("removing " + product);
+      cartService.removeFromCart(product).then(
+        function (response) {
+          $scope.cart = response.data || [];
+        },
+        function (error) {
+          console.error(error);
+        }
+      );
+    }
 
   }
 
   function getCartTotal(cart) {
-    console.log(cart);
     var total = 0;
     cart.forEach(function (line) {
       total += line.product.unitPrice * line.quantity;

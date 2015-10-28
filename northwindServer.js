@@ -85,6 +85,9 @@ app.get('/product/:id', function (req, res) {
 app.get('/search', function (req, res) {
   res.redirect('/app/product/index.html#/search?searchString=' + req.query.searchString);
 });
+app.get('/browse', function (req, res) {
+  res.redirect('/app/product/index.html#/browse');
+});
 
 // Ordering routes
 app.get('/checkout', function (req, res) {
