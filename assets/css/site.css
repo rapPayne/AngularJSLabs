@@ -8,3 +8,19 @@ body {
 table#cartTable img {
     height: 2em;
 }
+
+.jumbotron {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+.jumbotron h1 {
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
+}
