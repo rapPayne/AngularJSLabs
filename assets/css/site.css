@@ -9,6 +9,10 @@ table#cartTable img {
     height: 2em;
 }
 
+.productDetail img {
+    max-height: 15em;
+}
+
 .jumbotron {
     padding-top: 10px;
     padding-bottom: 0px;
