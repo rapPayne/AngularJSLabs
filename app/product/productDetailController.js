@@ -1,12 +1,12 @@
 (function () {
+  'use strict';
   angular.module("productModule")
     .controller("productDetailController", productDetailController);
-  productDetailController.$inject = ['$scope', 'productService', 'categoryService', 'cartService', '$routeParams', '$window'];
+  productDetailController.$inject = ['$scope', 'productService', 'categoryService', 'cartService', 'notifyFactory', '$routeParams', '$window'];
 
-  function productDetailController($scope, productService, categoryService, cartService, $routeParams, $window) {
+  function productDetailController($scope, productService, categoryService, cartService, notifyFactory, $routeParams, $window) {
     $scope.quantity = 1;
     var productID = $routeParams.productID;
-    //TODO: Display category *name*, not categoryID. Will need to look it up.
     productService.getProduct(productID)
       .then(function (res) {
         $scope.product = res.data;
@@ -14,20 +14,21 @@
           .then(function (res) {
             $scope.categoryName = res.data.categoryName
           }, function (error) {
-            console.error("Error getting product: "+error.data, error);
+            notifyFactory.showError("Oops! Something went wrong. Try again.","Error getting the category");
+            console.error("Error getting category: "+error.data, error);
           });
-
       }, function (error) {
+        notifyFactory.showError("Oops! Something went wrong. Try again.","Error getting the product");
         console.error("Error getting product: "+error.data, error);
       });
 
     $scope.addToCart = function(product, quantity) {
-      console.log("Adding quanitity " + quantity + " of " + product.productName + " to the cart.");
       cartService.addToCart(product, quantity).then(
         function (data) {
-          console.log("Added to cart", data);
+          notifyFactory.showSuccess(product.productName + " was added to your cart","Added");
         },
         function (err) {
+          notifyFactory.showError("Oops! Something went wrong. Try again.","Error adding to cart");
           console.error("Error adding to cart", err);
         }
       );
