@@ -2,7 +2,7 @@
   var Schema = mongoose.Schema;
 
   var customerModel = new Schema({
-    "customerID" : {type: Number},
+    "customerID" : {type: String},
     "userId" : {type: String},
     "companyName" : {type: String},
     "contactName" : {type: String},

@@ -4,7 +4,6 @@
   registerController.$inject = ['$scope', '$http'];
   function registerController($scope, $http) {
     $scope.registerUser = function () {
-      console.log("You submitted");
       $http({
         method: "POST",
         url: "/api/register",
@@ -12,6 +11,8 @@
           username: $scope.username,
           password: $scope.password,
           email: $scope.email,
+          firstName: $scope.firstName,
+          lastName: $scope.lastName,
           companyName: $scope.companyName,
           address: $scope.address,
           city: $scope.city,
@@ -21,12 +22,10 @@
         }
       }).then(
         function (resp) {
-          console.log(resp);
           $scope.errorMessage = "";
           $scope.successMessage = "Your account has been created. Let's get shopping!";
         },
         function (err) {
-          console.error(err);
           $scope.successMessage = "";
           $scope.errorMessage = err.data;
         }
