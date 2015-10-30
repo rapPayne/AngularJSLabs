@@ -1,0 +1,27 @@
+<div class='productDetail'>
+  <h1>{{ product.productName }}</h1>
+  <img class="img-rounded" src='/assets/img/productImages/{{ product.productID }}.jpg' alt='{{ product.productName }}'/>
+
+  <p>
+    Category: {{ categoryName }}
+  </p>
+
+  <p>
+    Sold in {{ product.quantityPerUnit }}
+  </p>
+
+  <p>
+    Price: {{ product.unitPrice | currency:"US$" }}
+  </p>
+</div>
+
+<div id="addToCart">
+  <form ng-submit="addToCart(product, quantity)">
+    <div class="form-group">
+      <label for="quantity" class="control-label">Quantity:</label>
+      <input ng-model="quantity" name="quantity" type="number" value="1" id="quantity" class="form-control" />
+      <input type="submit" value="Add to cart" class="btn btn-primary" />
+    </div>
+  </form>
+</div>
+<button ng-click="goBack()" class="btn btn-link">Back to list</button>

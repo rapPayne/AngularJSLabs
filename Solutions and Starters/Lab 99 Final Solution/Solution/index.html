@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Northwind Traders</title>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="site.js"></script>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../assets/css/site.css"/>
+  <script src="./node_modules/angular/angular.min.js" defer></script>
+  <script src="./node_modules/angular-route/angular-route.min.js" defer></script>
+  <script src="/app/shared/sharedModule.js" defer></script>
+  <script src="/app/shared/pageHeaderController.js" defer></script>
+  <script src="/app/shared/cartService.js" defer></script>
+  <script src="/app/shared/productService.js"  defer></script>
+  <script src="./main/mainModule.js" defer></script>
+  <script src="./main/mainProductController.js"  defer></script>
+</head>
+<body class="container" ng-app="mainModule">
+<div ng-include="'./shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
+<main class="row">
+  <p>
+    We focus on supplying high-end specialty restaurants with the best quality foods
+    sourced from around the world and shipped to your door.
+  </p>
+
+  <h3>
+    Today's featured items
+  </h3>
+  <div class="carousel slide" data-ride="carousel" id="featuredCarousel" ng-controller="mainProductController">
+    <div class="carousel-inner">
+
+      <div ng-repeat="product in products | limitTo:4" class="item text-center" ng-class="{active: $first}">
+        <a ng-href='product/index.html#/{{product.productID}}'><img class="center-block" ng-src='../assets/img/productImages/{{product.productID}}.jpg' alt='{{product.productName}}'/>{{product.productName}}</a>
+      </div>
+    </div> <!-- /.carousel-inner -->
+
+    <a class="left carousel-control" href="#featuredCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#featuredCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+
+    <ol class="carousel-indicators">
+      <li data-target="#featuredCarousel" data-slide-to="0"></li>
+      <li data-target="#featuredCarousel" data-slide-to="1"></li>
+      <li data-target="#featuredCarousel" data-slide-to="2"></li>
+      <li data-target="#featuredCarousel" data-slide-to="3"></li>
+    </ol>
+  </div> <!-- /.carousel -->
+  <div class="well">
+    <h3>
+      Why us?
+    </h3>
+
+    <p>
+      Because of our priorities:
+    </p>
+    <ul>
+      <li>Our food is delicious. Only the finest and the freshest for you.</li>
+      <li>It's all about your restaurant. We make you look good. We'll only sell the star
+        of the plate, the conversation piece of the meal, or that hidden ingredient that
+        makes a dish's character.
+      </li>
+      <li>We listen to you. When you call us we'll answer and take the time that we need with
+        you.
+      </li>
+      <li>We're real. We don't fake our decisions about what to sell, how to describe the
+        food or just about everything else.
+      </li>
+    </ul>
+  </div>
+</main>
+<footer class="row" ng-include="'./shared/pageFooterPartial.html'">
+</footer>
+</body>
+</html>
