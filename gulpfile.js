@@ -3,7 +3,7 @@ var nodemon = require('gulp-nodemon');
 
 gulp.task('default', function () {
   nodemon({
-    ignore: ['./node_modules/*'],
+    ignore: ['./node_modules/*','./app/'],
     script: './northwindServer.js',
     ext: 'js',
     env: {
