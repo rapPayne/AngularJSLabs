@@ -52,7 +52,7 @@
         <td><img ng-src="/assets/img/productImages/{{line.product.productID}}.jpg" title="{{line.product.productID}}" /></td>
         <td><a ng-href="/product/{{line.product.productID}}">{{line.product.productName}}</a></td>
         <td>{{line.product.unitPrice | currency:"US$"}}</td>
-        <td><input type="number" ng-model="line.quantity" data-id='49' /></td>
+        <td><input type="number" ng-model="line.quantity" /></td>
         <td>{{ line.product.unitPrice * line.quantity | currency:"US$" }}</td>
         <td><a ng-click='removeFromCart(line.product)'><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>

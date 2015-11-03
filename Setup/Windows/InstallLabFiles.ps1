@@ -1,9 +1,11 @@
 # Powershell version of the install script. Based on the bash version.
 # To run ...
-# Start - Find PowerShell - right click- run as administrator
-# set-executionpolicy remotesigned
-# cd to ID/Setup/Windows
-# ./installLabFiles.ps1
+# 1. Start - Find PowerShell - right click- run as administrator
+# 2. Set-ExecutionPolicy remotesigned
+# 3. cd to Setup/Windows
+# 4. ./installLabFiles.ps1
+
+# If you get problems with the execution policy, look here: https://blog.netspi.com/15-ways-to-bypass-the-powershell-execution-policy/
 
 # Before running this, you must have installed npm (with Node.js) and
 # MongoDB.
