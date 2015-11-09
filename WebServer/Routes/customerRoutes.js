@@ -19,6 +19,7 @@ var routes = function (customer) {
     });
 
   // Middleware insertion - intercept the request and do the find.
+  //TODO: Authorize the user ... make sure his userID can read this customerID
   apiRouter.use('/:customerId', function (req, res, next) {
     customer.findById(req.params.customerId, function(err, customer){
       if (err)

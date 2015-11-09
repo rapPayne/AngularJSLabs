@@ -1,0 +1,23 @@
+<h1>Browse the Product Catalog</h1>
+
+Category:
+<select ng-model='category'
+        ng-options="category.categoryName for category in categories"
+        name="category" id="category">
+  <option value="">All categories</option>
+</select>
+
+<div class="table">
+  <section class="row">
+    <section ng-repeat="cat in categories" ng-show="cat == category || ! category">
+      <h1>{{ cat.categoryName }}</h1>
+      <p>{{ cat.description }}</p>
+      <div ng-repeat="product in products | filter: {categoryID: cat.categoryID}:true | orderBy:'productName'" class="row">
+        <div class="col-sm-2"><a href="#/{{ product.productID }}"><img class="img-responsive" ng-src="/assets/img/ProductImages/{{ product.productID }}.jpg"/></a></div>
+        <div class="col-sm-5"><a href="#/{{ product.productID }}">{{ product.productName }} <span ng-show="product.featured" class="label label-success">Featured</span></a></div>
+        <div class="col-sm-3">{{ product.quantityPerUnit }}</div>
+        <div class="col-sm-2">{{ product.unitPrice | currency:"US$" }}</div>
+      </div>
+    </section>
+  </section>
+</div>
