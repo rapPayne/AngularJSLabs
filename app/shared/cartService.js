@@ -22,6 +22,7 @@ memory.
       $http.get('/api/cart').then(
         function (res) {
           self.cart.length = 0;
+          res.data = res.data || [];
           res.data.forEach(function (line) {
             self.cart.push(line);
           });

@@ -5,7 +5,8 @@ var auth = {
   // Set up passport authentication
   initPassport: function (passport, repo) {
     passport.use(new localStrategy(function (username, password, next) {
-      repo.findOne({username: username}, function (err, user) {
+      //Case-insensitive NoSQL query
+      repo.findOne({username: {"$regex": "^"+username+"$", "$options": "-i"}}, function (err, user) {
         if (!err && user) {
           var hashedPassword = hasher.hashPassword(password, user.salt);
           if (hashedPassword === user.passwordHash) {

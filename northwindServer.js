@@ -42,7 +42,7 @@ var cartRouter = require('./webserver/Routes/cartRoutes.js')();
 var productRouter = require('./webserver/Routes/productRoutes.js')(product);
 var categoryRouter = require('./webserver/Routes/categoryRoutes.js')(category);
 var employeeRouter = require('./webserver/Routes/employeeRoutes.js')(employee);
-//var userRouter = require('./webserver/Routes/userRoutes.js')(user, customer);
+var userRouter = require('./webserver/Routes/userRoutes.js')(user, customer);
 var loginRouter = require('./webserver/Routes/loginRoutes.js')();
 var registerRouter = require('./webserver/Routes/registerRoutes.js')(user, customer);
 var customerRouter = require('./webserver/Routes/customerRoutes.js')(customer);
@@ -55,7 +55,7 @@ app.use('/api/customer',customerRouter);
 app.use('/api/employee',employeeRouter);
 app.use('/api/register',registerRouter);
 app.use('/api/login',loginRouter);
-//app.use('/api/user',userRouter);
+app.use('/api/user',userRouter);
 app.use(express.static(__dirname));
 
 //TODO: Add a list of pages that should be rerouted iff the user is not logged in.
@@ -122,3 +122,12 @@ app.get('/checkout', function (req, res) {
 app.listen(port, function () {
   console.log('Node/express is running on port', port);
 });
+
+// Middleware to redirect to Login if the user is not logged in.
+function loggedIn(req, res, next) {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
