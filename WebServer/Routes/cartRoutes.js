@@ -25,7 +25,8 @@ var routes = function () {
       else
         cart.push({"product": product, "quantity": quantity});
       req.session.cart = cart;
-      res.status(204).send("Added product to cart");
+      //res.status(204).send("Added product to cart");
+      res.json(cart);
     })
     .delete(function (req, res) {
       if (! req.body.product )
