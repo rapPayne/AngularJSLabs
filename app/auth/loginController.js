@@ -2,9 +2,8 @@
   angular.module("authModule")
     .controller("loginController", loginController);
 
-  loginController.$inject = ['$scope', '$http'];
-  function loginController($scope, $http) {
-
+  loginController.$inject = ['$scope', '$http','userService'];
+  function loginController($scope, $http, userService) {
     $scope.login = function () {
       $http({
         method: "POST",
@@ -26,6 +25,9 @@
             $scope.errorMessage = "There was a problem logging in. Please try again.";
         }
       )
+        .success(function () {
+          userService.refreshUser();
+        });
     };
   }
 })();
