@@ -1,8 +1,8 @@
 (function () {
   angular.module("authModule")
     .controller("registerController",registerController);
-  registerController.$inject = ['$scope', '$http'];
-  function registerController($scope, $http) {
+  registerController.$inject = ['$scope', '$http', 'notifyFactory'];
+  function registerController($scope, $http, notifyFactory) {
     $scope.registerUser = function () {
       $http({
         method: "POST",
@@ -24,10 +24,12 @@
         function (resp) {
           $scope.errorMessage = "";
           $scope.successMessage = "Your account has been created. Let's get shopping!";
+          notifyFactory.showSuccess("Your account has been created. Let's get shopping!","You're registered");
         },
         function (err) {
           $scope.successMessage = "";
           $scope.errorMessage = err.data;
+          notifyFactory.showError("Please try again. " + err.data, "Registration failed");
         }
       )
     };

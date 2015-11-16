@@ -3,10 +3,6 @@
 <div id="searchedTerm" class="text-primary bg-primary">You're searching for '{{searchString}}'</div>
 Enter all or part of the description: <input ng-model="searchString" name="search" type="text" id="search"/>
 <button id="go" class="btn btn-primary">Search</button>
-Category:
-<select ng-model='category' ng-options="category.CategoryName for category in categories track by category.CategoryID" name="category" id="category">
-  <option value="">All categories</option>
-</select>
 
 <div class="table">
   <div class="row hidden-xs">
@@ -15,7 +11,7 @@ Category:
     <div class="col-sm-3">Quantity Per Unit</div>
     <div class="col-sm-2">Price</div>
   </div>
-  <div ng-repeat="product in products | filter:{ productName:searchString, categoryID:category.CategoryID }" class="row">
+  <div ng-repeat="product in products | filter:{ productName:searchString }" class="row">
     <div class="col-sm-2"><a href="#/{{ product.productID }}"><img class="img-responsive" ng-src="/assets/img/ProductImages/{{ product.productID }}.jpg"/></a></div>
     <div class="col-sm-5"><a href="#/{{ product.productID }}">{{ product.productName }} <span ng-show="product.featured" class="label label-success">Featured</span></a></a></div>
     <div class="col-sm-3">{{ product.quantityPerUnit }}</div>
@@ -23,7 +19,7 @@ Category:
   </div>
 
   <div class="row">
-    <div class="text-success bg-success">{{ (products | filter:{ productName:searchString, categoryID:category.CategoryID }).length }} products found.</div>
+    <div class="text-success bg-success">{{ (products | filter:{ productName:searchString }).length }} products found.</div>
   </div>
 
 </div>

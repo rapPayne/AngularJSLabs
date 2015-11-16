@@ -3,23 +3,45 @@
 <head>
   <meta charset='utf-8'>
   <title>View cart/Checkout</title>
-  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="../../assets/css/site.css"/>
-  <script src="../node_modules/angular/angular.min.js" defer></script>
-  <script src="/app/shared/sharedModule.js" defer></script>
-  <script src="/app/shared/pageHeaderController.js" defer></script>
-  <script src="/app/shared/userService.js" defer></script>
-  <script src="/app/shared/cartService.js" defer></script>
-  <script src="/app/shared/customerService.js" defer></script>
-  <script src="orderingModule.js" defer></script>
-  <script src="checkoutController.js"  defer></script>
-  <script src="shipAddressController.js"  defer></script>
+  <script src="/app/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/app/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/assets/css/site.css"/>
 </head>
-<body class="container" ng-app="orderingModule">
-<div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
-<main class="row" ng-controller="checkoutController">
+<body class="container">
+<div>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar">
+      <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+    <div id="topNavbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/app/index.html">Northwind Traders</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Things to do <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/app/product/productSearch.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+            <li><a href="aboutUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-info-sign"></span> About us</a></li>
+            <li><a href="contactUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-envelope"></span> Contact us</a></li>
+            <li><a href="/app/product/productList.html"><span class="glyphicon glyphicon-list-alt"></span> Catalog</a></li>
+          </ul>
+        </li>
+        <li><a href="/checkout"><span class="glyphicon glyphicon-shopping-cart"></span> Your cart <span class="badge">0</span></a></li>
+      </ul>
+      <p class="navbar-text">Welcome! <a href="/login">Log in</a></p>
+      <form action="/search" method="GET" class="navbar-form navbar-left">
+        <input type="search" name="searchString" id="searchString" title="Enter a product description" placeholder="Search" class="form-control">
+        <button class="btn"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+    </div>
+  </nav>
+  <header class="jumbotron img-rounded row">
+    <img class="img-responsive col-sm-3" src="/assets/img/ChefHatLogo.png" alt="Northwind logo">
+    <h1 class="col-sm-9">Northwind Traders
+      <small>Fine foods for restaurants</small>
+    </h1>
+  </header>
+</div>
+<main class="row">
   <h1> Check Out</h1>
   <div class="panel panel-default">
     <div class="panel-body">
@@ -28,8 +50,8 @@
     </div>
   </div>
   <div class="table-responsive">
-    <div ng-show="! cart.length" class="alert alert-warning">There's nothing in your cart. Let's fix that, shall we? Go <a href="/browse">shop</a>!</div>
-    <table id='cartTable' class="table table-striped table-hover table-condensed" ng-show="cart.length">
+    <div class="alert alert-warning">There's nothing in your cart. Let's fix that, shall we? Go <a href="/browse">shop</a>!</div>
+    <table id="cartTable" class="table table-striped table-hover table-condensed">
       <thead>
       <tr>
         <th colspan="2">Product</th>
@@ -41,60 +63,95 @@
       <tfoot>
       <tr>
         <td></td>
-        <td style='text-align: right'>Subtotal:</td>
+        <td style="text-align: right">Subtotal:</td>
         <td></td>
         <td></td>
-        <td style='border-top: 5px'>{{ cart.subtotal | currency:"US$" }}</td>
+        <td style="border-top: 5px">US$330.00</td>
       </tr>
       </tfoot>
       <tbody>
-      <tr ng-repeat="line in cart">
-        <td><img ng-src="/assets/img/productImages/{{line.product.productID}}.jpg" title="{{line.product.productID}}" /></td>
-        <td><a ng-href="/product/{{line.product.productID}}">{{line.product.productName}}</a></td>
-        <td>{{line.product.unitPrice | currency:"US$"}}</td>
-        <td><input type="number" ng-model="line.quantity" ng-change="refreshCart()" /></td>
-        <td>{{ line.product.unitPrice * line.quantity | currency:"US$" }}</td>
-        <td><a ng-click='removeFromCart(line.product)'><span class="glyphicon glyphicon-trash"></span></a></td>
+      <!-- ngRepeat: line in cart -->
+      <tr>
+        <td><img title="10" src="/assets/img/productImages/10.jpg"></td>
+        <td><a href="/product/10">Ikura</a></td>
+        <td>US$31.00</td>
+        <td><input type="number" value="4"></td>
+        <td>US$124.00</td>
+        <td><a><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
+
+      <tr>
+        <td><img title="22" src="/assets/img/productImages/22.jpg"></td>
+        <td><a href="/product/22">Gustaf's Knäckebröd</a></td>
+        <td>US$21.00</td>
+        <td><input type="number" value="4"></td>
+        <td>US$84.00</td>
+        <td><a><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+
+      <tr>
+        <td><img title="35" src="/assets/img/productImages/35.jpg"></td>
+        <td><a href="/product/35">Steeleye Stout</a></td>
+        <td>US$18.00</td>
+        <td><input type="number" value="4"></td>
+        <td>US$72.00</td>
+        <td><a><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+
+      <tr>
+        <td><img title="49" src="/assets/img/productImages/49.jpg"></td>
+        <td><a href="/product/49">Maxilaku</a></td>
+        <td>US$20.00</td>
+        <td><input type="number" value="1"></td>
+        <td>US$20.00</td>
+        <td><a><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+
+      <tr>
+        <td><img title="7" src="/assets/img/productImages/7.jpg"></td>
+        <td><a href="/product/7">Uncle Bob's Organic Dried Pears</a></td>
+        <td>US$30.00</td>
+        <td><input type="number" value="1"></td>
+        <td>US$30.00</td>
+        <td><a><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+
       </tbody>
     </table>
   </div>
-  <section ng-controller="shipAddressController">
+  <section>
     <fieldset title="Where shall we ship this?">
       <legend>Where shall we ship this?</legend>
       <div class="form-group">
-        <label for="shipName"class="control-label">Name to ship to:</label>
-        <input ng-model="customer.contactName" name="shipName" class="form-control" maxlength="40"
-               id="shipName"/>
+        <label for="shipName" class="control-label">Name to ship to:</label>
+        <input name="shipName" class="form-control" maxlength="40" id="shipName">
       </div>
       <div class="form-group">
-        <label for="address"class="control-label">Address:</label>
-        <input ng-model="customer.address" name="address" class="form-control" maxlength="60"
-               id="address"/>
+        <label for="address" class="control-label">Address:</label>
+        <input name="address" class="form-control" maxlength="60" id="address">
       </div>
       <div class="form-group">
-        <label for="city"class="control-label">City:</label>
-        <input ng-model="customer.city" name="city" class="form-control" maxlength="15" id="city"/>
+        <label for="city" class="control-label">City:</label>
+        <input name="city" class="form-control" maxlength="15" id="city">
       </div>
       <div class="form-group">
-        <label for="region"class="control-label">Region/State:</label>
-        <input ng-model="customer.region" name="region" class="form-control" maxlength="15" id="region"/>
+        <label for="region" class="control-label">Region/State:</label>
+        <input name="region" class="form-control" maxlength="15" id="region">
       </div>
       <div class="form-group">
-        <label for="postalCode"class="control-label">Zip/Postal Code:</label>
-        <input ng-model="customer.postalCode" name="postalCode" class="form-control" maxlength="10"
-               id="postalCode"/>
+        <label for="postalCode" class="control-label">Zip/Postal Code:</label>
+        <input name="postalCode" class="form-control" maxlength="10" id="postalCode">
       </div>
       <div class="form-group">
-        <label for="country"class="control-label">Country:</label>
-        <input ng-model="customer.country" name="country" class="form-control" maxlength="15" id="country"/>
+        <label for="country" class="control-label">Country:</label>
+        <input name="country" class="form-control" maxlength="15" id="country">
       </div>
     </fieldset>
   </section>
   <fieldset>
     <legend>How shall we ship it?</legend>
     <div class="form-group">
-      <label for="shipVia"class="control-label">Shipping method:</label>
+      <label for="shipVia" class="control-label">Shipping method:</label>
       <select name="shipVia" class="form-control" id="shipVia">
         <option value="1">UPS Next Day Air - $262.70</option>
         <option value="2">UPS 2nd Day Air - $140.73</option>
@@ -109,12 +166,11 @@
   <fieldset>
     <legend>How would you like to pay for it?</legend>
     <div class="form-group">
-      <label for="creditCardNumber"class="control-label">Credit card number:</label>
-      <input name="creditCardNumber" class="form-control" type="text" maxlength="20" id="creditCardNumber"
-             autocomplete="off"/>
+      <label for="creditCardNumber" class="control-label">Credit card number:</label>
+      <input name="creditCardNumber" class="form-control" type="text" maxlength="20" id="creditCardNumber" autocomplete="off">
     </div>
     <div class="form-group">
-      <label for="expiryMonth"class="control-label">Expiration:</label>
+      <label for="expiryMonth" class="control-label">Expiration:</label>
       <select name="expiryMonth" id="expiryMonth">
         <option value="--">--</option>
         <option value="01">January</option>
@@ -141,20 +197,22 @@
       </select>
     </div>
     <div class="form-group">
-      <label class="control-label"><input id="storeCCNumber" type="checkbox" name="storeCCNumber"/> Remember this credit card number
+      <label class="control-label"><input id="storeCCNumber" type="checkbox" name="storeCCNumber"> Remember this credit card number
         for next time I check
         out.</label>
     </div>
   </fieldset>
 
-  <input
-    data-toggle="popover" title="Oh, no! A problem!" data-content="Your credit card is still invalid. Please enter another one."
-    type="submit" class="btn btn-primary" value="Place Order" id="placeOrder"/>
-
-  </div>
-
+  <input data-toggle="popover" title="" data-content="Your credit card is still invalid. Please enter another one." type="submit" class="btn btn-primary" value="Place Order" id="placeOrder" data-original-title="Oh, no! A problem!">
 </main>
-<footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
+<footer class="row"><span>Copyright © Northwind Traders</span>
+  <ul class="list-unstyled list-inline text-center">
+    <li><a href="https://www.facebook.com/pages/Northwind-Traders/101856779971208">Facebook</a></li>
+    <li><a href="https://twitter.com/NWTNews">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/company/northwind-ventures-dba-northwind-technologies-?trk=company_logo">LinkedIn</a>
+    </li>
+  </ul>
 </footer>
 </body>
+
 </html>

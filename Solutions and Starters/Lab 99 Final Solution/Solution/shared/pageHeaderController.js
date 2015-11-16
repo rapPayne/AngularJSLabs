@@ -2,15 +2,9 @@
   'use strict';
   angular.module('sharedModule')
     .controller('pageHeaderController',pageHeaderController);
-  pageHeaderController.$inject=['$scope', 'cartService'];
-  function pageHeaderController($scope, cartService) {
-    cartService.getCart().then(
-      function (response) {
-        $scope.cart = response.data;
-      },
-      function (error) {
-        console.error("Error getting cart in pageHeader.", error);
-      }
-    );
+  pageHeaderController.$inject=['$scope', 'cartService', 'userService'];
+  function pageHeaderController($scope, cartService, userService) {
+    $scope.cart = cartService.cart;
+    $scope.user = userService.user;
   }
 })();

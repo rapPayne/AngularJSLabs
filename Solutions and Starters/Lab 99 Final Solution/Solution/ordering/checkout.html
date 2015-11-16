@@ -5,12 +5,12 @@
   <title>View cart/Checkout</title>
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../site.js"></script>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="../../assets/css/site.css"/>
   <script src="../node_modules/angular/angular.min.js" defer></script>
   <script src="/app/shared/sharedModule.js" defer></script>
   <script src="/app/shared/pageHeaderController.js" defer></script>
+  <script src="/app/shared/userService.js" defer></script>
   <script src="/app/shared/cartService.js" defer></script>
   <script src="/app/shared/customerService.js" defer></script>
   <script src="orderingModule.js" defer></script>
@@ -44,7 +44,7 @@
         <td style='text-align: right'>Subtotal:</td>
         <td></td>
         <td></td>
-        <td style='border-top: 5px'>{{ cartTotal | currency:"US$" }}</td>
+        <td style='border-top: 5px'>{{ cart.subtotal | currency:"US$" }}</td>
       </tr>
       </tfoot>
       <tbody>
@@ -52,7 +52,7 @@
         <td><img ng-src="/assets/img/productImages/{{line.product.productID}}.jpg" title="{{line.product.productID}}" /></td>
         <td><a ng-href="/product/{{line.product.productID}}">{{line.product.productName}}</a></td>
         <td>{{line.product.unitPrice | currency:"US$"}}</td>
-        <td><input type="number" ng-model="line.quantity" /></td>
+        <td><input type="number" ng-model="line.quantity" ng-change="refreshCart()" /></td>
         <td>{{ line.product.unitPrice * line.quantity | currency:"US$" }}</td>
         <td><a ng-click='removeFromCart(line.product)'><span class="glyphicon glyphicon-trash"></span></a></td>
       </tr>
