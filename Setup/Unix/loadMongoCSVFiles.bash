@@ -47,8 +47,6 @@ for file in $files ; do
 done
 
 # Change the featured product field to a true boolean.
-mongo <<EOF
-use northwind;
-db.products.find({"featured":"true"}).forEach(function(a){a.featured=true;
-db.products.save(a)});
+mongo northwind <<EOF
+db.products.update({"featured":"true"}, {\$set: {featured: true}}, {multi:true});
 EOF
