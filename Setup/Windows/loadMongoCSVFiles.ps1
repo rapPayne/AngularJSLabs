@@ -49,9 +49,7 @@ Foreach-Object {
 
 # Change the featured product field to a true boolean.
 @'
-use $dbName;
-db.products.find({"featured":"true"}).forEach(function(a){a.featured=true;
-db.products.save(a)});
-'@ | mongo
+db.products.update({"featured":"true"}, {$set: {featured: true}}, {multi:true});
+'@ | mongo $dbName
 
 exit 0
