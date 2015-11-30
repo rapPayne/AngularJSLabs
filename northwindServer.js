@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var session = require('express-session');
 var passport = require('passport');
+var path = require('path');
 //var fs = require('fs');
 
 var db = mongoose.connect('mongodb://localhost/northwind');
@@ -56,10 +57,27 @@ app.use('/api/employee',employeeRouter);
 app.use('/api/register',registerRouter);
 app.use('/api/login',loginRouter);
 app.use('/api/user',userRouter);
+
+//Routes to allow pointing to starters based on an env variable
+var solutionDir = process.env.NODE_SOLUTIONDIR;
+if (solutionDir) {
+  app.get('/app/:p1', function (req, res) {
+    var file = path.join(__dirname, 'Solutions and Starters', solutionDir, req.params.p1);
+    res.sendFile(file);
+  });
+  app.get('/app/:p1/:p2', function (req, res) {
+    var file = path.join(__dirname, 'Solutions and Starters', solutionDir, req.params.p1, req.params.p2);
+    res.sendFile(file);
+  });
+  app.get('/app/:p1/:p2/:p3', function (req, res) {
+    var file = path.join(__dirname, 'Solutions and Starters', solutionDir, req.params.p1, req.params.p2, req.params.p3);
+    res.sendFile(file);
+  });
+}
 app.use(express.static(__dirname));
 
 //TODO: Add a list of pages that should be rerouted iff the user is not logged in.
-
+// Root route
 app.get('/', function (req, res) {
   res.redirect('/app/index.html');
 });
@@ -70,7 +88,6 @@ app.get('/login', function (req, res) {
 app.get("/register", function (req, res) {
   res.redirect("/app/auth/register.html");
 });
-
 // Product routes
 app.get('/product/:id', function (req, res) {
   res.redirect('/app/product/index.html#/' + req.params.id);
@@ -81,7 +98,6 @@ app.get('/search', function (req, res) {
 app.get('/browse', function (req, res) {
   res.redirect('/app/product/index.html#/browse');
 });
-
 // Ordering routes
 app.get('/checkout', function (req, res) {
   res.redirect('/app/ordering/checkout.html');
