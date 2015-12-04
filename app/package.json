@@ -5,8 +5,10 @@
   "bugs": "rap@creator.net",
   "dependencies": {
     "angular": "^1.4.5",
+    "angular-mocks": "^1.4.8",
     "angular-route": "^1.4.5",
     "bootstrap": "^3.3.5",
+    "jasmine": "^2.4.1",
     "jquery": "^2.1.4",
     "toastr": "^2.1.2"
   }
