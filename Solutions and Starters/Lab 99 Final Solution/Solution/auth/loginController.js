@@ -15,8 +15,8 @@
       }).then(
         function (resp) {
           $scope.errorMessage = "";
-          $scope.successMessage = "You're successfully logged in.";
-          notifyFactory.showSuccess("You're successfully logged in.","Welcome!")
+          $scope.successMessage = "You're successfully logged in as" + $scope.username;
+          notifyFactory.showSuccess("You're successfully logged in as " + $scope.username,"Welcome!")
         },
         function (err) {
           $scope.successMessage = "";

@@ -20,6 +20,15 @@
       );
     }
 
+    $scope.placeOrder = function () {
+      $scope.cart.forEach(function (line) {
+        cartService.removeFromCart(line.product).then(function () {
+          console.log("Line ordered:", line);
+        }, function (error) {
+          console.error("Couldn't remove ", line);
+        });
+      });
+    };
   }
 
 })();

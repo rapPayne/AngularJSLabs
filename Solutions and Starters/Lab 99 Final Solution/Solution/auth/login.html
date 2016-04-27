@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset='utf-8'>
   <title>Login</title>
   <script src="/app/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="/app/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/app/node_modules/toastr/build/toastr.min.js"></script>
-  <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/app/node_modules/toastr/build/toastr.min.css"/>
-  <link rel="stylesheet" href="/assets/css/site.css"/>
+  <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/app/node_modules/toastr/build/toastr.min.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
   <script src="/app/node_modules/angular/angular.min.js" defer></script>
   <script src="/app/shared/sharedModule.js" defer></script>
   <script src="/app/shared/pageHeaderController.js" defer></script>
@@ -16,48 +17,53 @@
   <script src="/app/shared/cartService.js" defer></script>
   <script src="/app/shared/notifyFactory.js" defer></script>
   <script src="authModule.js" defer></script>
-  <script src="loginController.js"  defer></script>
+  <script src="loginController.js" defer></script>
 </head>
+
 <body class="container" ng-app="authModule">
-<div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
-<main class="row" ng-controller="loginController">
+  <div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
+  <main class="row" ng-controller="loginController">
 
-  <h2> Log In </h2>
+    <h2> Log In </h2>
 
-  <p class="alert alert-info">
-    Please enter your username and password or <a href='register.html'>Register</a> if you don't have an account.
-  </p>
-  <p class="alert alert-danger" ng-show="errorMessage">
-    {{ errorMessage }}
-  </p>
-  <p class="alert alert-success" ng-show="successMessage">
-    {{ successMessage }}
-  </p>
+    <p class="alert alert-info">
+      Please enter your username and password or <a href='register.html'>Register</a> if you don't have an account.
+    </p>
+    <p class="alert alert-danger" ng-show="errorMessage">
+      {{ errorMessage }}
+    </p>
+    <p class="alert alert-success" ng-show="successMessage">
+      {{ successMessage }}
+    </p>
 
-  <div>
-    <form ng-submit="login()">
-      <fieldset>
-        <legend>
-          Account Information
-        </legend>
-        <div class="form-group">
-          <label for="username" class="control-label">Username</label>
-          <input ng-model="username" name="username" class="form-control" id="username" autocomplete="off"/>
-        </div>
-        <div class="form-group">
-          <label for="password" class="control-label">Password</label>
-          <input ng-model="password" name="password" class="form-control" type="password" id="password"/>
-        </div>
-        <div class="form-group">
-          <label class="radio"><input ng-model="rememberMe" id="rememberMe" type="checkbox" name="rememberMe"/> Keep me logged in</label>
-        </div>
-      </fieldset>
-      <input type="submit" class="btn btn-primary" value="Log In" id="loginButton"/>
-    </form>
-  </div>
+    <div>
+      <form name="loginForm" ng-submit="login()">
+        <fieldset>
+          <legend>
+            Account Information
+          </legend>
+          <div class="form-group has-feedback">
+            <label for="username" class="control-label">Username</label>
+            <input ng-model="username" name="username" required class="form-control" autocomplete="off" />
+            <span ng-show="loginForm.username.$touched && loginForm.username.$invalid" class="glyphicon form-control-feedback">*</span>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" ng-model="password" name="password" required class="form-control" />
+            <span ng-show="loginForm.password.$touched && loginForm.password.$invalid" class="glyphicon form-control-feedback">*</span>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input ng-model="rememberMe" id="rememberMe" type="checkbox" name="rememberMe" /> Keep me logged in</label>
+          </div>
+        </fieldset>
+        <input type="submit" ng-disabled="loginForm.$invalid" class="btn btn-primary" value="Log In" />
+      </form>
+    </div>
 
-</main>
-<footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
-</footer>
+  </main>
+  <footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
+  </footer>
 </body>
+
 </html>

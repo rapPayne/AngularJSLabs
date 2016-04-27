@@ -1,0 +1,11 @@
+<div class="col-sm-2">
+  <a href="#/{{ product.productID }}"><img class="img-responsive" ng-src="/assets/img/ProductImages/{{ product.productID }}.jpg" /></a>
+</div>
+<div class="col-sm-4">
+  <a href="#/{{ product.productID }}">{{ product.productName }} <span ng-show="product.featured" class="label label-success">Featured</span></a></div>
+<div class="col-sm-3">{{ product.quantityPerUnit }}</div>
+<div class="col-sm-1">{{ product.unitPrice | currency:"US$" }}</div>
+<div class="col-sm-2">
+  <input ng-model="quantity" type="number" class="form-control" />
+  <button ng-click="addToCart(product, quantity)" class="btn btn-primary btn-sm glyphicon glyphicon-shopping-cart"></button>
+</div>

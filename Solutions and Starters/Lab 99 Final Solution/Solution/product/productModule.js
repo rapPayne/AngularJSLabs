@@ -1,10 +1,12 @@
 (function () {
-  angular.module("productModule", ['ngRoute', 'sharedModule']);
-
-  angular.module("productModule")
+  'use strict';
+  angular.module("productModule", ['ngRoute', 'sharedModule'])
     .config(config);
+  
   config.$inject = ['$routeProvider', '$locationProvider'];
+
   function config($routeProvider, $locationProvider) {
+    //$locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
         controller: 'productListController',
@@ -31,5 +33,5 @@
       });
     //$locationProvider.html5Mode(true);
 
-  };
+  }
 })();

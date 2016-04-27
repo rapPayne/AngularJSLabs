@@ -27,7 +27,7 @@ environment variable before you start the web server.
 `set NODE_SOLUTIONDIR="Lab 99 Final Solution/Solution"
 `node northwindServer.js
 ### On Mac/Linux
-`NODE_SOLUTIONDIR="Lab 99 Final Solution/Solution"
+`export NODE_SOLUTIONDIR="Lab 99 Final Solution/Solution"
 `node northwindServer.js
 This will cause Node/Express to return the files under that directory instead of the ones under /app.
 

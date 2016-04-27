@@ -69,7 +69,7 @@ memory.
         }
       );
     };
-
+    
     this.refreshTotals = function() {
       self.cart.subtotal = getSubtotal(self.cart);
     };

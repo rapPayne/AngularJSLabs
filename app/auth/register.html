@@ -18,34 +18,34 @@
   </p>
 
   <div>
-    <form>
+    <form action="/fakeRegister" method="post">
       <fieldset class="col-md-6">
         <legend>
           Account Information
         </legend>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="username" class="control-label">Username:</label>
-          <input name="username" class="form-control" type="text" id="username" required/>
+          <input name="username" class="form-control" pattern="^\w+$" required />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="email" class="control-label">E-mail:</label>
-          <input name="email" class="form-control" type="email" id="email"/>
+          <input type="email" name="email" class="form-control" required />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="firstName" class="control-label">First (given) Name</label>
-          <input name="firstName" class="form-control" type="text" id="firstName"/>
+          <input name="firstName" class="form-control" required />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="lastName" class="control-label">Last (family) Name</label>
-          <input name="lastName" class="form-control" type="text" id="lastName"/>
+          <input name="lastName" class="form-control" required />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="password" id="PasswordLabel" class="control-label">Password:</label>
-          <input name="password" class="form-control" type="password" id="password"/>
+          <input type="password" name="password" class="form-control" required />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="confirmPassword" id="confirmPasswordLabel" class="control-label">Confirm Password:</label>
-          <input name="confirmPassword" class="form-control" type="password" id="confirmPassword"/>
+          <input type="password" name="confirmPassword" class="form-control" required />
         </div>
       </fieldset>
       <fieldset class="col-md-6">
@@ -53,33 +53,33 @@
           My address information
         </legend>
 
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="companyName" class="control-label">Company Name</label>
-          <input name="companyName" class="form-control" type="text" id="companyName" pattern=".{5,}"
-                 title="Restaurant/cafe name (at least 5 characters)." required/>
+          <input name="companyName" class="form-control" id="companyName" pattern="^.{5,}" required
+          title="Restaurant/cafe name (at least 5 characters)." />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="address" class="control-label">Address</label>
-          <input name="address" class="form-control" type="text" id="address"/>
+          <input name="address" class="form-control" id="address"/>
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="city" class="control-label">City</label>
-          <input name="city" class="form-control" type="text" id="city"/>
+          <input name="city" class="form-control" />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="region" class="control-label">Region/State</label>
-          <input name="region" class="form-control" type="text" id="region"/>
+          <input name="region" class="form-control" />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="postalCode" class="control-label">Postal Code</label>
-          <input name="postalCode" class="form-control" type="text" id="postalCode"/>
+          <input name="postalCode" class="form-control" />
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
           <label for="country" class="control-label">Country</label>
-          <input name="country" class="form-control" type="text" id="country"/>
+          <input name="country" class="form-control" />
         </div>
       </fieldset>
-      <input type="submit" class="btn btn-primary" value="Create User" id="createUserButton" />
+      <input type="submit" class="btn btn-primary" value="Create User" />
     </form>
     <p class="alert alert-success">
     </p>

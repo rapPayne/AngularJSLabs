@@ -1,160 +1,189 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset='utf-8'>
   <title>View cart/Checkout</title>
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="../../assets/css/site.css"/>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+  <link rel="stylesheet" href="/app/node_modules/toastr/build/toastr.min.css" />
   <script src="../node_modules/angular/angular.min.js" defer></script>
+  <script src="/app/node_modules/toastr/build/toastr.min.js"></script>
   <script src="/app/shared/sharedModule.js" defer></script>
   <script src="/app/shared/pageHeaderController.js" defer></script>
+  <script src="/app/shared/notifyFactory.js" defer></script>
   <script src="/app/shared/userService.js" defer></script>
   <script src="/app/shared/cartService.js" defer></script>
   <script src="/app/shared/customerService.js" defer></script>
   <script src="orderingModule.js" defer></script>
-  <script src="checkoutController.js"  defer></script>
-  <script src="shipAddressController.js"  defer></script>
+  <script src="checkoutController.js" defer></script>
+  <script src="shipViaController.js" defer></script>
+  <script src="shipAddressController.js" defer></script>
 </head>
+
 <body class="container" ng-app="orderingModule">
-<div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
-<main class="row" ng-controller="checkoutController">
-  <h1> Check Out</h1>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      You can change the number of items in your cart below. To remove a product from your cart altogether hit the
-      'remove' button
+  <div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
+  <main ng-controller="checkoutController" class="row">
+    <h1> Check Out</h1>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        You can change the number of items in your cart below. To remove a product from your cart altogether hit the 'remove' button
+      </div>
     </div>
-  </div>
-  <div class="table-responsive">
-    <div ng-show="! cart.length" class="alert alert-warning">There's nothing in your cart. Let's fix that, shall we? Go <a href="/browse">shop</a>!</div>
-    <table id='cartTable' class="table table-striped table-hover table-condensed" ng-show="cart.length">
-      <thead>
-      <tr>
-        <th colspan="2">Product</th>
-        <th>Unit Price</th>
-        <th>Quantity</th>
-        <th>Extended Price</th>
-      </tr>
-      </thead>
-      <tfoot>
-      <tr>
-        <td></td>
-        <td style='text-align: right'>Subtotal:</td>
-        <td></td>
-        <td></td>
-        <td style='border-top: 5px'>{{ cart.subtotal | currency:"US$" }}</td>
-      </tr>
-      </tfoot>
-      <tbody>
-      <tr ng-repeat="line in cart">
-        <td><img ng-src="/assets/img/productImages/{{line.product.productID}}.jpg" title="{{line.product.productID}}" /></td>
-        <td><a ng-href="/product/{{line.product.productID}}">{{line.product.productName}}</a></td>
-        <td>{{line.product.unitPrice | currency:"US$"}}</td>
-        <td><input type="number" ng-model="line.quantity" ng-change="refreshCart()" /></td>
-        <td>{{ line.product.unitPrice * line.quantity | currency:"US$" }}</td>
-        <td><a ng-click='removeFromCart(line.product)'><span class="glyphicon glyphicon-trash"></span></a></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  <section ng-controller="shipAddressController">
-    <fieldset title="Where shall we ship this?">
-      <legend>Where shall we ship this?</legend>
-      <div class="form-group">
-        <label for="shipName"class="control-label">Name to ship to:</label>
-        <input ng-model="customer.contactName" name="shipName" class="form-control" maxlength="40"
-               id="shipName"/>
-      </div>
-      <div class="form-group">
-        <label for="address"class="control-label">Address:</label>
-        <input ng-model="customer.address" name="address" class="form-control" maxlength="60"
-               id="address"/>
-      </div>
-      <div class="form-group">
-        <label for="city"class="control-label">City:</label>
-        <input ng-model="customer.city" name="city" class="form-control" maxlength="15" id="city"/>
-      </div>
-      <div class="form-group">
-        <label for="region"class="control-label">Region/State:</label>
-        <input ng-model="customer.region" name="region" class="form-control" maxlength="15" id="region"/>
-      </div>
-      <div class="form-group">
-        <label for="postalCode"class="control-label">Zip/Postal Code:</label>
-        <input ng-model="customer.postalCode" name="postalCode" class="form-control" maxlength="10"
-               id="postalCode"/>
-      </div>
-      <div class="form-group">
-        <label for="country"class="control-label">Country:</label>
-        <input ng-model="customer.country" name="country" class="form-control" maxlength="15" id="country"/>
-      </div>
-    </fieldset>
-  </section>
-  <fieldset>
-    <legend>How shall we ship it?</legend>
-    <div class="form-group">
-      <label for="shipVia"class="control-label">Shipping method:</label>
-      <select name="shipVia" class="form-control" id="shipVia">
-        <option value="1">UPS Next Day Air - $262.70</option>
-        <option value="2">UPS 2nd Day Air - $140.73</option>
-        <option value="3">UPS Ground - $46.91</option>
-        <option value="4">FedEx Standard Overnight - $234.55</option>
-        <option value="5">FedEx 2Day - $121.97</option>
-        <option value="6">FedEx Ground - $49.72</option>
-        <option value="7">US Postal Service Priority Mail - $37.53</option>
-      </select>
+    <div class="table-responsive">
+      <div ng-show="! cart.length" class="alert alert-warning">There's nothing in your cart. Let's fix that, shall we? Go <a href="/browse">shop</a>!</div>
+      <table id='cartTable' class="table table-striped table-hover table-condensed" ng-show="cart.length">
+        <thead>
+          <tr>
+            <th colspan="2">Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Extended Price</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td style='text-align: right'>Subtotal:</td>
+            <td></td>
+            <td></td>
+            <td style='border-top: 5px'>{{ cart.subtotal | currency:"US$" }}</td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr ng-repeat="line in cart">
+            <td><img ng-src="/assets/img/productImages/{{line.product.productID}}.jpg" title="{{line.product.productID}}" /></td>
+            <td><a ng-href="/product/{{line.product.productID}}">{{line.product.productName}}</a></td>
+            <td>{{line.product.unitPrice | currency:"US$"}}</td>
+            <td>
+              <input type="number" ng-model="line.quantity" ng-change="refreshCart()" />
+            </td>
+            <td>{{ line.product.unitPrice * line.quantity | currency:"US$" }}</td>
+            <td><a ng-click='removeFromCart(line.product)'><span class="glyphicon glyphicon-trash"></span></a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </fieldset>
-  <fieldset>
-    <legend>How would you like to pay for it?</legend>
-    <div class="form-group">
-      <label for="creditCardNumber"class="control-label">Credit card number:</label>
-      <input name="creditCardNumber" class="form-control" type="text" maxlength="20" id="creditCardNumber"
-             autocomplete="off"/>
-    </div>
-    <div class="form-group">
-      <label for="expiryMonth"class="control-label">Expiration:</label>
-      <select name="expiryMonth" id="expiryMonth">
-        <option value="--">--</option>
-        <option value="01">January</option>
-        <option value="02">February</option>
-        <option value="03">March</option>
-        <option value="04">April</option>
-        <option value="05">May</option>
-        <option value="06">June</option>
-        <option value="07">July</option>
-        <option value="08">August</option>
-        <option value="09">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-      </select>
-      <select name="expiryYear" id="ddlExpiryYear">
-        <option value="--">--</option>
-        <option value="2014">2014</option>
-        <option value="2015">2015</option>
-        <option value="2016">2016</option>
-        <option value="2017">2017</option>
-        <option value="2018">2018</option>
-        <option value="2019">2019</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="control-label"><input id="storeCCNumber" type="checkbox" name="storeCCNumber"/> Remember this credit card number
-        for next time I check
-        out.</label>
-    </div>
-  </fieldset>
+    <section ng-controller="shipAddressController">
+      <fieldset>
+        <legend>Where shall we ship this?</legend>
+        <form name="shipTo" novalidate>
+          <div class="form-group has-feedback" ng-class="{'has-success': shipTo.shipName.$touched && shipTo.shipName.$valid, 'has-error':shipTo.shipName.$touched && shipTo.shipName.$invalid}">
+            <label for="shipName" class="control-label">Name to ship to:</label>
+            <input ng-model="customer.contactName" name="shipName" class="form-control" ng-maxlength="40" required pattern="^[\w' ]+$" />
+            <span ng-show="shipTo.shipName.$touched && shipTo.shipName.$invalid" class="glyphicon form-control-feedback">*</span>
+            <div ng-show="shipTo.shipName.$touched && shipTo.shipName.$error.required" class="alert alert-danger">Your name is required.</div>
+            <div ng-show="shipTo.shipName.$touched && shipTo.shipName.$error.pattern" class="alert alert-danger">That doesn't look like a name. It has a weird character.</div>
+            <div ng-show="shipTo.shipName.$touched && shipTo.shipName.$error.maxlength" class="alert alert-danger">Too many characters. Shorten the name, please.</div>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="address" class="control-label">Address:</label>
+            <input ng-model="customer.address" name="address" class="form-control" ng-maxlength="60" required />
+            <span ng-show="shipTo.address.$touched && shipTo.address.$invalid" class="glyphicon form-control-feedback">*</span>
+            <div ng-show="shipTo.address.$touched && shipTo.address.$error.required" class="alert alert-danger">We need your address.</div>
+            <div ng-show="shipTo.address.$touched && shipTo.address.$error.maxlength" class="alert alert-danger">Too many characters. Shorten the address, please.</div>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="city" class="control-label">City:</label>
+            <input ng-model="customer.city" name="city" class="form-control" ng-maxlength="15" required />
+            <span ng-show="shipTo.city.$touched && shipTo.city.$invalid" class="glyphicon form-control-feedback">*</span>
+            <div ng-show="shipTo.city.$touched && shipTo.city.$error.required" class="alert alert-danger">We need a city.</div>
+            <div ng-show="shipTo.city.$touched && shipTo.city.$error.maxlength" class="alert alert-danger">Too many characters. Shorten the city, please.</div>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="region" class="control-label">Region/State:</label>
+            <input ng-model="customer.region" name="region" class="form-control" ng-maxlength="15" />
+            <span ng-show="shipTo.region.$touched && shipTo.region.$invalid" class="glyphicon form-control-feedback">*</span>
+            <div ng-show="shipTo.region.$touched && shipTo.region.$error.required" class="alert alert-danger">We need your region.</div>
+            <div ng-show="shipTo.region.$touched && shipTo.region.$error.maxlength" class="alert alert-danger">Too many characters. Shorten the region, please.</div>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="postalCode" class="control-label">Zip/Postal Code</label>
+            <input ng-model="customer.postalCode" name="postalCode" class="form-control" ng-maxlength="10" />
+            <span ng-show="shipTo.postalCode.$touched && shipTo.postalCode.$invalid" class="glyphicon form-control-feedback">*</span>
+            <div ng-show="shipTo.postalCode.$touched && shipTo.postalCode.$error.required" class="alert alert-danger">Your postal/zip code is required.</div>
+            <div ng-show="shipTo.postalCode.$touched && shipTo.postalCode.$error.maxlength" class="alert alert-danger">Too many characters. Shorten the postal code, please.</div>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="country" class="control-label">Country</label>
+            <input ng-model="customer.country" name="country" class="form-control" ng-maxlength="15" />
+            <span ng-show="shipTo.country.$touched && shipTo.country.$invalid" class="glyphicon form-control-feedback">*</span>
+            <div ng-show="shipTo.country.$touched && shipTo.country.$error.required" class="alert alert-danger">Your name is required.</div>
+            <div ng-show="shipTo.country.$touched && shipTo.country.$error.maxlength" class="alert alert-danger">Too many characters. Shorten the country name, please.</div>
+          </div>
+        </form>
+      </fieldset>
+    </section>
+    <section ng-controller="shipViaController">
+      <fieldset>
+        <legend>How shall we ship it?</legend>
+        <div class="form-group">
+          <label for="shipVia" class="control-label">Shipping method:</label>
+          <select ng-model="shipVia" ng-options="s.name + ' - ' + s.price for s in shipViaOptions" name="shipVia" class="form-control">
+            <option value="">Please choose one ...</option>
+          </select>
+        </div>
+      </fieldset>
+    </section>
+    <section class="alert alert-success">
+      Your order will ship to:
+      <address>
+      <strong>{{ customer.contactName }}</strong><br />
+      {{ customer.address }}<br />
+      {{ customer.city }}, {{ customer.region }} {{ customer.postalCode }}<br />
+      {{ customer.country }}<br />
+    </address>
+      <p>Your order total is: {{ cart.subtotal + shipping }}</p>
+    </section>
+    <section>
+      <fieldset>
+        <legend>How would you like to pay for it?</legend>
+        <div class="form-group">
+          <label for="creditCardNumber" class="control-label">Credit card number:</label>
+          <input name="creditCardNumber" class="form-control" type="text" maxlength="20" id="creditCardNumber" autocomplete="off" />
+        </div>
+        <div class="form-group">
+          <label for="expiryMonth" class="control-label">Expiration:</label>
+          <select name="expiryMonth" id="expiryMonth">
+            <option value="--">--</option>
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+          <select name="expiryYear" id="ddlExpiryYear">
+            <option value="--">--</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label">
+            <input id="storeCCNumber" type="checkbox" name="storeCCNumber" /> Remember this credit card number for next time I check out.
+          </label>
+        </div>
+      </fieldset>
 
-  <input
-    data-toggle="popover" title="Oh, no! A problem!" data-content="Your credit card is still invalid. Please enter another one."
-    type="submit" class="btn btn-primary" value="Place Order" id="placeOrder"/>
+      <button ng-disabled="shipTo.$invalid" ng-click="placeOrder()" class="btn btn-primary">Place Order</button>
+    </section>
 
-  </div>
-
-</main>
-<footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
-</footer>
+  </main>
+  <footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
+  </footer>
 </body>
+
 </html>
