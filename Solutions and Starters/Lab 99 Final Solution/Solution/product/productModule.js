@@ -2,11 +2,11 @@
   'use strict';
   angular.module("productModule", ['ngRoute', 'sharedModule'])
     .config(config);
-  
+
   config.$inject = ['$routeProvider', '$locationProvider'];
 
   function config($routeProvider, $locationProvider) {
-    //$locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode({enabled:true, requireBase: false});
     $routeProvider
       .when('/', {
         controller: 'productListController',
@@ -31,7 +31,5 @@
       .otherwise({
         //redirectTo: '/app/product/index.html'
       });
-    //$locationProvider.html5Mode(true);
-
   }
 })();

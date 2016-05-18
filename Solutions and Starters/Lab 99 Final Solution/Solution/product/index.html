@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset='utf-8'>
   <title>Product Details</title>
   <script src="/app/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="/app/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="/app/node_modules/toastr/build/toastr.min.js"></script>
-  <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="/app/node_modules/toastr/build/toastr.min.css"/>
-  <link rel="stylesheet" href="/assets/css/site.css"/>
+  <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/app/node_modules/toastr/build/toastr.min.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
   <script src="/app/node_modules/angular/angular.min.js" defer></script>
   <script src="/app/node_modules/angular-route/angular-route.min.js" defer></script>
   <script src="/app/shared/sharedModule.js" defer></script>
   <script src="/app/shared/pageHeaderController.js" defer></script>
   <script src="/app/shared/userService.js" defer></script>
   <script src="/app/shared/cartService.js" defer></script>
-  <script src="productModule.js" defer></script>
-  <script src="productListController.js" defer></script>
-  <script src="productDetailController.js" defer></script>
-  <script src="productSearchController.js" defer></script>
+  <script src="/app/product/productModule.js" defer></script>
+  <script src="/app/product/productListController.js" defer></script>
+  <script src="/app/product/productDetailController.js" defer></script>
+  <script src="/app/product/productSearchController.js" defer></script>
   <script src="/app/shared/productService.js" defer></script>
   <script src="/app/shared/categoryService.js" defer></script>
   <script src="/app/shared/notifyFactory.js" defer></script>
-    <script src="/app/product/nwProductOverviewDirective.js" defer></script>
+  <script src="/app/product/nwProductOverviewDirective.js" defer></script>
+  <!-- base href="/app/product/index.html" -->
 </head>
+
 <body class="container" ng-app="productModule">
-<div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
-<main class="row">
-  <div ng-view></div>
-</main>
-<footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
-</footer>
+  <div ng-include="'/app/shared/pageHeaderPartial.html'" ng-controller="pageHeaderController"></div>
+  <main class="row">
+    <div ng-view></div>
+  </main>
+  <footer class="row" ng-include="'/app/shared/pageFooterPartial.html'">
+  </footer>
 </body>
+
 </html>
