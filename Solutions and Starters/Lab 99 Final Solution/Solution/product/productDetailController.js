@@ -2,9 +2,10 @@
   'use strict';
   angular.module("productModule")
     .controller("productDetailController", productDetailController);
-  productDetailController.$inject = ['$scope', 'productService', 'categoryService', 'cartService', 'notifyFactory', '$routeParams', '$window'];
+  
+  productDetailController.$inject = ['$scope', 'productService', 'categoryService', 'cartFactory', 'notifyFactory', '$routeParams', '$window'];
 
-  function productDetailController($scope, productService, categoryService, cartService, notifyFactory, $routeParams, $window) {
+  function productDetailController($scope, productService, categoryService, cartFactory, notifyFactory, $routeParams, $window) {
     $scope.quantity = 1;
     var productID = $routeParams.productID;
     productService.getProduct(productID)
@@ -23,8 +24,8 @@
       });
 
     $scope.addToCart = function(product, quantity) {
-      cartService.addToCart(product, quantity).then(
-        function (data) {
+      cartFactory.addToCart(product, quantity).then(
+        function () {
           notifyFactory.showSuccess(product.productName + " was added to your cart","Added");
         },
         function (err) {

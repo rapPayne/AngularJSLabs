@@ -1,11 +1,13 @@
 /*
-Some notes:
-Using 'self' below because 'this' loses it's identity in inner functions. So we're saving
-the context, creating a closure.
+No longer needed.  Replaced by cartFactory.js.  
 
-Why are we setting self.cart.length to 0 and then pushing on to it rather than simply
-going 'self.cart = res.data'? Because that would clobber the reference, causing
-controllers that use this service to lose their pointers to the actual cart in
+Some notes:
+Using 'self' below because 'this' loses it's identity in inner functions. So we're saving the context, creating a closure.
+
+Why are we setting self.cart.length to 0 and then pushing on 
+to it rather than simply going 'self.cart = res.data'? Because 
+that would clobber the reference, causing controllers that use 
+this service to lose their pointers to the actual cart in
 memory.
  */
 (function () {

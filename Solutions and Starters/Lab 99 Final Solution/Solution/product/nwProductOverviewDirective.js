@@ -11,11 +11,11 @@
     };
   }
 
-  nwProductOverviewDirectiveController.$inject = ['$scope', 'cartService', 'notifyFactory'];
+  nwProductOverviewDirectiveController.$inject = ['$scope', 'cartFactory', 'notifyFactory'];
 
-  function nwProductOverviewDirectiveController($scope, cartService, notifyFactory) {
+  function nwProductOverviewDirectiveController($scope, cartFactory, notifyFactory) {
     $scope.addToCart = function (product, quantity) {
-      cartService.addToCart(product, quantity).then(
+      cartFactory.addToCart(product, quantity).then(
         function (data) {
           notifyFactory.showSuccess(product.productName + " was added to your cart", "Added");
         },

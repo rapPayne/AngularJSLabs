@@ -1,42 +1,42 @@
 var allCategories = [
   {
-    "CategoryID" : 2,
-    "CategoryName" : "Condiments",
-    "Description" : "Sweet and savory sauces, relishes, spreads, and seasonings"
+    "categoryID" : 2,
+    "categoryName" : "Condiments",
+    "description" : "Sweet and savory sauces, relishes, spreads, and seasonings"
   },
   {
-    "CategoryID" : 4,
-    "CategoryName" : "Dairy Products",
-    "Description" : "Cheeses"
+    "categoryID" : 4,
+    "categoryName" : "Dairy Products",
+    "description" : "Cheeses"
   },
   {
-    "CategoryID" : 1,
-    "CategoryName" : "Beverages",
-    "Description" : "Soft drinks, coffees, teas, beers, and ales"
+    "categoryID" : 1,
+    "categoryName" : "Beverages",
+    "description" : "Soft drinks, coffees, teas, beers, and ales"
   },
   {
-    "CategoryID" : 5,
-    "CategoryName" : "Grains/Cereals",
-    "Description" : "Breads, crackers, pasta, and cereal"
+    "categoryID" : 5,
+    "categoryName" : "Grains/Cereals",
+    "description" : "Breads, crackers, pasta, and cereal"
   },
   {
-    "CategoryID" : 7,
-    "CategoryName" : "Produce",
-    "Description" : "Dried fruit and bean curd"
+    "categoryID" : 7,
+    "categoryName" : "Produce",
+    "description" : "Dried fruit and bean curd"
   },
   {
-    "CategoryID" : 6,
-    "CategoryName" : "Meat/Poultry",
-    "Description" : "Prepared meats"
+    "categoryID" : 6,
+    "categoryName" : "Meat/Poultry",
+    "description" : "Prepared meats"
   },
   {
-    "CategoryID" : 8,
-    "CategoryName" : "Seafood",
-    "Description" : "Seaweed and fish"
+    "categoryID" : 8,
+    "categoryName" : "Seafood",
+    "description" : "Seaweed and fish"
   },
   {
-    "CategoryID" : 3,
-    "CategoryName" : "Confections",
-    "Description" : "Desserts, candies, and sweet breads"
+    "categoryID" : 3,
+    "categoryName" : "Confections",
+    "description" : "Desserts, candies, and sweet breads"
   }
 ];

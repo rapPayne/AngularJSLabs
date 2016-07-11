@@ -1,6 +1,3 @@
-/**
- * Created by rap on 12/4/15.
- */
 (function () {
 
   describe("Shared Specs", function () {
@@ -30,11 +27,11 @@
 
       it("Should have stuff in the cart", function () {
         var userService = {user: {firstName: "Rap", lastName: "Jones"}};
-        var cartService = {cart: [
+        var cartFactory = {cart: [
           {product: {productID: 1}, qty: 10}, {product: {productID: 2}, qty: 5}
         ]};
-        var $scope = {user: userService.user, cart: cartService.cart};
-        var pageHeaderController = $controller('pageHeaderController', {$scope: $scope, userService: userService, cartService:cartService});
+        var $scope = {user: userService.user, cart: cartFactory.cart};
+        var pageHeaderController = $controller('pageHeaderController', {$scope: $scope, userService: userService, cartFactory:cartFactory});
         console.log("phc:",pageHeaderController);
         expect(pageHeaderController).not.toBe('undefined');
       });
