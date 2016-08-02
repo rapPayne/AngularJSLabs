@@ -30,11 +30,11 @@ if ( $LastExitCode -ne 0 ) {
 }
 
 # Run npm install for the webserver
-cd ../../webserver
+cd ../..
 npm install
 
 # Run npm install for the app
-cd ../app
+cd app
 npm install
 
 echo ""
