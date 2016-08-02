@@ -25,17 +25,17 @@ installLab.ps1  # In Powershell
  
 ## To run the site
 1. Start Mongo daemon
-```bash
-mongod
-```
+  ```bash
+  mongod
+  ```
 2. Start the web server
-```bash
-node northwindServer.js
-```
+  ```bash
+  node northwindServer.js
+  ```
 3. Point your browser to the address that it tells you to, usually localhost:8000.
-```
-http://localhost:8000
-```
+  ```
+  http://localhost:8000
+  ```
 
 ## To run a solution or starter
 You can run a particular version of the site under Solutions and Starters by setting the NODE_SOLUTIONDIR 
