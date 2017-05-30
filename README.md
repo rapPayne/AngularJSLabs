@@ -30,7 +30,7 @@ or
   ```
 1. Start the web server
   ```
-  node northwindServer.js
+  node northwindServer
   ```
 1. Point your browser to the address that it tells you to, usually localhost:8000.
   ```

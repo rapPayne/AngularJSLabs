@@ -1,0 +1,13 @@
+{
+  "name": "AngularJSLabs",
+  "version": "0.0.1",
+  "author": "Rap Payne",
+  "bugs": "rap@creator.net",
+  "dependencies": {
+    "angular": "^1.4.5",
+    "angular-route": "^1.4.5",
+    "bootstrap": "^3.3.5",
+    "jquery": "^2.1.4",
+    "toastr": "^2.1.2"
+  }
+}

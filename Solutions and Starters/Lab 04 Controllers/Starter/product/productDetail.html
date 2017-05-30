@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Products</title>
+  <script src="/app/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/app/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/assets/css/site.css"/>
+</head>
+<body class="container">
+<div>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar">
+      <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+    <div id="topNavbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/app/index.html">Northwind Traders</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Things to do <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/app/product/productSearch.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+            <li><a href="aboutUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-info-sign"></span> About us</a></li>
+            <li><a href="contactUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-envelope"></span> Contact us</a></li>
+            <li><a href="/app/product/productList.html"><span class="glyphicon glyphicon-list-alt"></span> Catalog</a></li>
+          </ul>
+        </li>
+        <li><a href="/checkout"><span class="glyphicon glyphicon-shopping-cart"></span> Your cart <span class="badge">0</span></a></li>
+      </ul>
+      <p class="navbar-text">Welcome! <a href="/login">Log in</a></p>
+      <form action="/search" method="GET" class="navbar-form navbar-left">
+        <input type="search" name="searchString" id="searchString" title="Enter a product description" placeholder="Search" class="form-control">
+        <button class="btn"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+    </div>
+  </nav>
+  <header class="jumbotron img-rounded row">
+    <img class="img-responsive col-sm-3" src="/assets/img/ChefHatLogo.png" alt="Northwind logo">
+    <h1 class="col-sm-9">Northwind Traders
+      <small>Fine foods for restaurants</small>
+    </h1>
+  </header>
+</div>
+<main class="row">
+  <div class="productDetail">
+    <h1>Thüringer Rostbratwurst</h1>
+    <img class="img-rounded" alt="Thüringer Rostbratwurst" src="/assets/img/productImages/29.jpg">
+
+    <p>
+      Category: Meat/Poultry
+    </p>
+
+    <p>
+      Sold in 50 bags x 30 sausages.
+    </p>
+
+    <p>
+      Price: US$123.79
+    </p>
+  </div>
+
+  <div id="addToCart">
+    <form>
+      <div class="form-group">
+        <label for="quantity" class="control-label">Quantity:</label>
+        <input name="quantity" type="number" value="1" id="quantity" class="form-control">
+        <input type="submit" value="Add to cart" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+  <button class="btn btn-link">Back to list</button>
+</main>
+
+<footer class="row">
+  <span>Copyright © Northwind Traders</span>
+  <ul class="list-unstyled list-inline text-center">
+    <li><a href="https://www.facebook.com/pages/Northwind-Traders/101856779971208">Facebook</a></li>
+    <li><a href="https://twitter.com/NWTNews">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/company/northwind-ventures-dba-northwind-technologies-?trk=company_logo">LinkedIn</a>
+    </li>
+  </ul>
+</footer>
+</body>
+
+</html>

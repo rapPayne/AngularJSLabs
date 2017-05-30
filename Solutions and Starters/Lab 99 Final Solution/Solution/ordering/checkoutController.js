@@ -21,7 +21,7 @@
       );
     }
 
-    $scope.placeOrder = function () {
+    $scope.processOrder = function () {
       $scope.cart.forEach(function (line) {
         cartFactory.removeFromCart(line.product).then(function () {
           console.log("Line ordered:", line);

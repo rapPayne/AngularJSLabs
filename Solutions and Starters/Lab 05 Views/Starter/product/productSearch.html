@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Products</title>
+  <script src="/app/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/app/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/assets/css/site.css"/>
+</head>
+<body class="container">
+<div>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar">
+      <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+    <div id="topNavbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/app/index.html">Northwind Traders</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Things to do <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/app/product/productSearch.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+            <li><a href="aboutUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-info-sign"></span> About us</a></li>
+            <li><a href="contactUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-envelope"></span> Contact us</a></li>
+            <li><a href="/app/product/productList.html"><span class="glyphicon glyphicon-list-alt"></span> Catalog</a></li>
+          </ul>
+        </li>
+        <li><a href="/checkout"><span class="glyphicon glyphicon-shopping-cart"></span> Your cart <span class="badge">0</span></a></li>
+      </ul>
+      <p class="navbar-text">Welcome! <a href="/login">Log in</a></p>
+      <form action="/search" method="GET" class="navbar-form navbar-left">
+        <input type="search" name="searchString" id="searchString" title="Enter a product description" placeholder="Search" class="form-control">
+        <button class="btn"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+    </div>
+  </nav>
+  <header class="jumbotron img-rounded row">
+    <img class="img-responsive col-sm-3" src="/assets/img/ChefHatLogo.png" alt="Northwind logo">
+    <h1 class="col-sm-9">Northwind Traders
+      <small>Fine foods for restaurants</small>
+    </h1>
+  </header>
+</div>
+<main class="row">
+
+
+
+  <h1>Search for products</h1>
+
+  <div id="searchedTerm" class="text-primary bg-primary">You're searching for 'cho'</div>
+  <span>
+Enter all or part of the description: </span>
+  <input name="search" type="text" id="search">
+  <button id="go" class="btn btn-primary">Search</button>
+  <span>
+Category:
+</span>
+  <select name="category" id="category">
+    <option>All categories</option>
+    <option>Condiments</option>
+    <option>Dairy Products</option>
+    <option>Beverages</option>
+    <option>Grains/Cereals</option>
+    <option>Confections</option>
+    <option selected>Meat/Poultry</option>
+    <option>Produce</option>
+    <option>Seafood</option>
+  </select>
+
+  <div class="table">
+    <div class="row hidden-xs">
+      <div class="col-sm-2">Photo</div>
+      <div class="col-sm-5">Name</div>
+      <div class="col-sm-3">Quantity Per Unit</div>
+      <div class="col-sm-2">Price</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><a href="/app/product/productDetail.html"><img class="img-responsive" src="/assets/img/ProductImages/19.jpg"></a></div>
+      <div class="col-sm-5"><a href="/app/product/productDetail.html">Teatime Chocolate Biscuits</a></div>
+      <div class="col-sm-3">10 boxes x 12 pieces</div>
+      <div class="col-sm-2">US$9.20</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><a href="/app/product/productDetail.html"><img class="img-responsive" src="/assets/img/ProductImages/27.jpg"></a></div>
+      <div class="col-sm-5"><a href="/app/product/productDetail.html">Schoggi Schokolade</a></div>
+      <div class="col-sm-3">100 - 100 g pieces</div>
+      <div class="col-sm-2">US$43.90</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><a href="/app/product/productDetail.html"><img class="img-responsive" src="/assets/img/ProductImages/41.jpg"></a></div>
+      <div class="col-sm-5"><a href="/app/product/productDetail.html">Jack's New England Clam Chowder <span class="label label-success">Featured</span></a></div>
+      <div class="col-sm-3">12 - 12 oz cans</div>
+      <div class="col-sm-2">US$9.65</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2"><a href="/app/product/productDetail.html"><img class="img-responsive" src="/assets/img/ProductImages/48.jpg"></a></div>
+      <div class="col-sm-5"><a href="/app/product/productDetail.html">Chocolade</a></div>
+      <div class="col-sm-3">10 pkgs.</div>
+      <div class="col-sm-2">US$12.75</div>
+    </div>
+
+    <div class="row">
+      <div class="text-success bg-success">4 products found.</div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="row">
+  <span>Copyright © Northwind Traders</span>
+  <ul class="list-unstyled list-inline text-center">
+    <li><a href="https://www.facebook.com/pages/Northwind-Traders/101856779971208">Facebook</a></li>
+    <li><a href="https://twitter.com/NWTNews">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/company/northwind-ventures-dba-northwind-technologies-?trk=company_logo">LinkedIn</a>
+    </li>
+  </ul>
+</footer>
+</body>
+
+</html>

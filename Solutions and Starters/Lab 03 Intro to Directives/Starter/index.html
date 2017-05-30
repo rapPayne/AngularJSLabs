@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Northwind Traders</title>
+  <script src="/app/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/app/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/app/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/assets/css/site.css"/>
+</head>
+<body class="container">
+<div>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topNavbar">
+      <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+    <div id="topNavbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/app/index.html">Northwind Traders</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Things to do <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/app/product/productSearch.html"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+            <li><a href="aboutUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-info-sign"></span> About us</a></li>
+            <li><a href="contactUs.html" data-toggle="tooltip" data-placement="right" title="Coming soon!"><span class="glyphicon glyphicon-envelope"></span> Contact us</a></li>
+            <li><a href="/app/product/productList.html"><span class="glyphicon glyphicon-list-alt"></span> Catalog</a></li>
+          </ul>
+        </li>
+        <li><a href="/checkout"><span class="glyphicon glyphicon-shopping-cart"></span> Your cart <span class="badge">0</span></a></li>
+      </ul>
+      <p class="navbar-text">Welcome! <a href="/login">Log in</a></p>
+      <form action="/search" method="GET" class="navbar-form navbar-left">
+        <input type="search" name="searchString" id="searchString" title="Enter a product description" placeholder="Search" class="form-control">
+        <button class="btn"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+    </div>
+  </nav>
+  <header class="jumbotron img-rounded row">
+    <img class="img-responsive col-sm-3" src="/assets/img/ChefHatLogo.png" alt="Northwind logo">
+    <h1 class="col-sm-9">Northwind Traders
+      <small>Fine foods for restaurants</small>
+    </h1>
+  </header>
+</div>
+<main class="row">
+  <p>
+    We focus on supplying high-end specialty restaurants with the best quality foods
+    sourced from around the world and shipped to your door.
+  </p>
+
+  <h3>
+    Today's featured items
+  </h3>
+  <div class="carousel slide" data-ride="carousel" id="featuredCarousel">
+    <div class="carousel-inner">
+
+      <div class="item text-center">
+        <a href="product/index.html#/5"><img class="center-block" src="/assets/img/productImages/5.jpg" alt="Chef Anton's Gumbo Mix">Chef Anton's Gumbo Mix</a>
+      </div>
+
+      <div class="item text-center">
+        <a href="product/index.html#/20"><img class="center-block" src="/assets/img/productImages/20.jpg" alt="Sir Rodney's Marmalade">Sir Rodney's Marmalade</a>
+      </div>
+
+      <div class="item text-center active">
+        <a href="product/index.html#/58"><img class="center-block" src="/assets/img/productImages/58.jpg" alt="Escargots de Bourgogne">Escargots de Bourgogne</a>
+      </div>
+
+      <div class="item text-center">
+        <a href="product/index.html#/65"><img class="center-block" src="/assets/img/productImages/65.jpg" alt="Louisiana Fiery Hot Pepper Sauce">Louisiana Fiery Hot Pepper Sauce</a>
+      </div>
+
+    </div>
+
+    <a class="left carousel-control" href="#featuredCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#featuredCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+
+    <ol class="carousel-indicators">
+      <li data-target="#featuredCarousel" data-slide-to="0" class=""></li>
+      <li data-target="#featuredCarousel" data-slide-to="1" class=""></li>
+      <li data-target="#featuredCarousel" data-slide-to="2" class="active"></li>
+      <li data-target="#featuredCarousel" data-slide-to="3" class=""></li>
+    </ol>
+  </div>
+
+  <div class="well">
+    <h3>
+      Why us?
+    </h3>
+
+    <p>
+      Because of our priorities:
+    </p>
+    <ul>
+      <li>Our food is delicious. Only the finest and the freshest for you.</li>
+      <li>It's all about your restaurant. We make you look good. We'll only sell the star
+        of the plate, the conversation piece of the meal, or that hidden ingredient that
+        makes a dish's character.
+      </li>
+      <li>We listen to you. When you call us we'll answer and take the time that we need with
+        you.
+      </li>
+      <li>We're real. We don't fake our decisions about what to sell, how to describe the
+        food or just about everything else.
+      </li>
+    </ul>
+  </div>
+</main>
+<footer class="row"><span>Copyright © Northwind Traders</span>
+  <ul class="list-unstyled list-inline text-center">
+    <li><a href="https://www.facebook.com/pages/Northwind-Traders/101856779971208">Facebook</a></li>
+    <li><a href="https://twitter.com/NWTNews">Twitter</a></li>
+    <li><a href="https://www.linkedin.com/company/northwind-ventures-dba-northwind-technologies-?trk=company_logo">LinkedIn</a>
+    </li>
+  </ul>
+</footer>
+</body>
+</html>
