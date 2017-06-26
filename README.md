@@ -24,17 +24,17 @@ or
 
  
 ## To run the site
-1. Start Mongo daemon
+1. Start Mongo daemon in a command window
   ```
   mongod
   ```
-1. Start the web server
+1. Start the web server in another window
   ```
   node northwindServer
   ```
-1. Point your browser to the address that it tells you to, usually localhost:8000.
+1. Point your browser to the address that it tells you to, usually localhost:3000.
   ```
-  http://localhost:8000
+  http://localhost:3000
   ```
 
 ## To run a solution or starter
@@ -51,8 +51,18 @@ set NODE_SOLUTIONDIR="Lab 99 Final Solution/Solution"
 node northwindServer.js
 ```
 
-This will cause Node/Express to return the files under that directory instead of the ones under /app.
+This will cause Node/Express to serve the files under that directory instead of the ones under /app.
 
 ## To edit your own copy
 
 If you have [gulp](http://gulpjs.com/), just type `gulp`.  Gulp will start the server and report the port.  If not, you can restart the server each time you edit server-side code.
+
+## What if my company won't allow me to install mongo?
+1. Go get the package from [mongo](https://www.mongodb.com/download-center) anyway. 
+1. Install it on any **other** machine. 
+1. Find the executables (mongod.exe, mongo.exe, mongoimport.exe, etc.)
+1. Copy them to a directory you do have access to on your secured machine.
+1. Edit the $PATH (or %PATH%) to include this folder. You may need to reboot.
+1. Test it out by going mongod --version
+
+

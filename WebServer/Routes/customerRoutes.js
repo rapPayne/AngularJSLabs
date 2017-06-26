@@ -20,8 +20,8 @@ var routes = function (customer) {
 
   // Middleware insertion - intercept the request and do the find.
   //TODO: Authorize the user ... make sure his userID can read this customerID
-  apiRouter.use('/:customerId', function (req, res, next) {
-    customer.findById(req.params.customerId, function(err, customer){
+  apiRouter.use('/:customerID', function (req, res, next) {
+    customer.findOne({customerID: req.params.customerID}, function(err, customer){
       if (err)
         res.status(500).send(err);
       else if (customer) {
